@@ -1,0 +1,69 @@
+# =========================
+# Gradle files and wrappers
+# =========================
+.gradle/
+build/
+*/build/
+!gradle/wrapper/gradle-wrapper.jar
+gradle-app.setting
+gradlew
+gradlew.bswo
+
+# =========================
+# Local configuration
+# =========================
+local.properties
+
+# =========================
+# Logs and profiling
+# =========================
+*.log
+*.hprof
+
+# =========================
+# IDE and Editor files
+# =========================
+.idea/
+*.iml
+*.ipr
+*.iws
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
+
+# =========================
+# Android Studio generated
+# =========================
+captures/
+.externalNativeBuild/
+.cxx/
+.navigation/
+*.apk
+*.ap_
+output.json
+
+# =========================
+# Keystore and sensitive files
+# =========================
+*.jks
+*.keystore
+google-services.json
+
+# =========================
+# ProGuard
+# =========================
+proguard/
+
+# =========================
+# NDK/Native build artifacts
+# =========================
+obj/
+
+# =========================
+# OS and system files
+# =========================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+*.swp
+*.swo

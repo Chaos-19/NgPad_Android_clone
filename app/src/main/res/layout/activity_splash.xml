@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_height="match_parent"
+     android:layout_width="match_parent"
+     android:background="@color/colorPrimaryVariant"
+     android:id="@+id/splash_screen">
+
+    <ImageView
+         android:layout_height="220dp"
+         android:layout_width="220dp"
+         android:layout_centerInParent="true"
+         android:src="@drawable/codepointlogo"
+          />
+
+    <TextView
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         android:layout_marginBottom="40dp"
+         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+         android:layout_centerHorizontal="true"
+         android:textColor="@color/textPrimary"
+         android:layout_alignParentBottom="true"
+         android:text="Chaos AppDev"
+         android:textStyle="bold" />
+
+</RelativeLayout>

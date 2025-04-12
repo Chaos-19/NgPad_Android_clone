@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary and Accent Colors -->
+    <color name="colorPrimary">#061826</color> <!-- Dark blue/navy header -->
+    <color name="colorPrimaryVariant">#092032</color> <!-- Slightly lighter variant -->
+    <color name="colorAccent">#FF6B6B</color> <!-- Soft coral pink for highlights -->
+
+    <!-- Color fix additions -->
+    <color name="colorOnPrimary">#FFFFFFFF</color> <!-- White text on primary -->
+    <color name="colorSecondary">#FF6B6B</color> <!-- Reusing coral pink as secondary -->
+    <color name="colorSecondaryVariant">#FFD6D6</color> <!-- Soft pink for variant -->
+    <color name="colorOnSecondary">#FF000000</color> <!-- Black text on secondary -->
+
+    <!-- Backgrounds -->
+    <color name="backgroundLight">#FAFAFA</color> <!-- Light background -->
+    <color name="backgroundCard">#FFFFFF</color> <!-- Card background -->
+    <color name="backgroundAccent">#FFF3F3</color> <!-- Light pinkish for tags -->
+
+    <!-- Text Colors -->
+    <color name="textPrimary">#FFF</color> <!-- Dark text -->
+    <color name="textSecondary">#4A4A4A</color> <!-- Secondary gray -->
+    <color name="textMuted">#A0A0A0</color> <!-- Muted gray text -->
+
+    <!-- UI Elements -->
+    <color name="tagPink">#FFECEC</color>
+    <color name="tagBorder">#FFD6D6</color>
+
+    <!-- Existing fallback colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

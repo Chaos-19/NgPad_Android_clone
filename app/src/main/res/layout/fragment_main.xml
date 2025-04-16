@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-     xmlns:android="http://schemas.android.com/apk/res/android"
-     xmlns:app="http://schemas.android.com/apk/res-auto"
-     xmlns:tools="http://schemas.android.com/tools"
-     android:layout_height="match_parent"
-     android:layout_width="match_parent"
-     android:id="@+id/constraintLayout"
-     >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/constraintLayout"
+>
 
     <TextView
-         android:layout_height="wrap_content"
-         android:layout_width="wrap_content"
-         android:layout_marginBottom="@dimen/activity_vertical_margin"
-         tools:layout_constraintTop_creator="1"
-         android:layout_marginEnd="@dimen/activity_horizontal_margin"
-         app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-         android:textColor="@color/colorPrimary"
-         tools:layout_constraintLeft_creator="1"
-         android:layout_marginTop="@dimen/activity_vertical_margin"
-         android:layout_marginStart="@dimen/activity_horizontal_margin"
-         android:id="@+id/section_label"
-         app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        android:textColor="@color/colorPrimary"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:id="@+id/section_label"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <ExpandableListView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:indicatorRight="?android:attr/expandableListPreferredItemIndicatorLeft"
+        android:id="@+id/expListView">
+
+    </ExpandableListView>
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Test Layout"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

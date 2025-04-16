@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
+  private int Id;
   private String courseTitle;
+  private String courseIcon;
   private String courseDescription;
   private List<Lesson> lessons;
 
-  public Course(String courseTitle, String courseDescription) {
+  public Course(int Id, String courseTitle, String courseIcon, String courseDescription) {
+    this.Id = Id;
     this.courseTitle = courseTitle;
+    this.courseIcon = courseIcon;
     this.courseDescription = courseDescription;
     this.lessons = new ArrayList<>();
   }
@@ -36,5 +40,21 @@ public class Course {
 
   public void setCourseDescription(String courseDescription) {
     this.courseDescription = courseDescription;
+  }
+
+  public int getId() {
+    return this.Id;
+  }
+
+  public void setId(int Id) {
+    this.Id = Id;
+  }
+
+  public String getCourseIcon() {
+    return this.courseIcon;
+  }
+
+  public void setCourseIcon(String courseIcon) {
+    this.courseIcon = courseIcon;
   }
 }

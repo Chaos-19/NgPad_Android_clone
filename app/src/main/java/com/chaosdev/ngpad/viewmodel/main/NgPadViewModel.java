@@ -8,51 +8,38 @@ import com.chaosdev.ngpad.model.main.Lesson;
 import com.chaosdev.ngpad.model.main.NgPad;
 
 public class NgPadViewModel extends ViewModel {
-  private MutableLiveData<NgPad> ngPadLiveData = new MutableLiveData<>();
+    private MutableLiveData<NgPad> ngPadLiveData = new MutableLiveData<>();
 
-  // Simulate data fetch (e.g., from API/database)
-  public void fetchUser() {
-    NgPad ngpad = new NgPad();
+    public void fetchUser() {
+        NgPad ngpad = new NgPad();
 
-    Category category = new Category(20, "Basics", "http://localhost:8080/icon.jpj", "basics_web");
+        // Horizontal category
+        Category category1 = new Category(20, "Featured Courses", "http://localhost:8080/icon.jpj", "featured_web");
+        category1.setIsHorizontal(false);
+        Course course1 = new Course(2001, "HTML", "http://localhost:8080/icon.jpj", "Learn HTML basics");
+        Course course2 = new Course(2002, "JavaScript", "http://localhost:8080/icon.jpj", "Learn JS basics");
+        Course course3 = new Course(2003, "TypeScript", "http://localhost:8080/icon.jpj", "Learn TS basics");
+        category1.addCourse(course1);
+        category1.addCourse(course2);
+        category1.addCourse(course3);
 
-    Course course =
-        new Course(
-            2003,
-            "HTML",
-            "http://localhost:8080/icon.jpj",
-            "Designed for beginners willing to learn computer programming");
+        // Vertical category
+        Category category2 = new Category(21, "Basics", "http://localhost:8080/icon.jpj", "basics_web");
+        category2.setIsHorizontal(true);
+        Course course4 = new Course(2004, "CSS", "http://localhost:8080/icon.jpj", "Learn CSS basics");
+        Course course5 = new Course(2005, "Python", "http://localhost:8080/icon.jpj", "Learn Python basics");
+        Lesson lesson = new Lesson("213", "Introduction", "This is introduction content");
+        course4.addLesson(lesson);
+        category2.addCourse(course4);
+        category2.addCourse(course5);
 
-    Course course2 =
-        new Course(
-            2003,
-            "JavaScript",
-            "http://localhost:8080/icon.jpj",
-            "Designed for beginners willing to learn computer programming");
+        ngpad.addCategory(category1);
+        ngpad.addCategory(category2);
 
-    Course course3 =
-        new Course(
-            2003,
-            "TypeScript",
-            "http://localhost:8080/icon.jpj",
-            "Designed for beginners willing to learn computer programming");
+        ngPadLiveData.setValue(ngpad);
+    }
 
-    Lesson lesson = new Lesson("213", "Introduction", "This is introduction content of the Data");
-
-    course.addLesson(lesson);
-    category.addCourse(course);
-    category.addCourse(course2);
-    category.addCourse(course3);
-
-    ngpad.addCategory(category);
-
-    ngpad.addCategory(category);
-    ngpad.addCategory(category);
-
-    ngPadLiveData.setValue(ngpad);
-  }
-
-  public MutableLiveData<NgPad> getUserLiveData() {
-    return ngPadLiveData;
-  }
+    public MutableLiveData<NgPad> getUserLiveData() {
+        return ngPadLiveData;
+    }
 }

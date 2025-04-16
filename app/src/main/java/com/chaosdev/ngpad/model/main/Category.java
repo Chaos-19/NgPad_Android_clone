@@ -4,57 +4,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
-  private int Id;
-  private String categoryName;
-  private String categoryIcon;
-  private String slug;
-  private List<Course> courses;
+    private int id;
+    private String categoryName;
+    private String iconUrl;
+    private String description;
+    private List<Course> courses;
+    private boolean isHorizontal; // New field
 
-  public Category(int Id, String categoryName, String categoryIcon, String slug) {
-    this.Id = Id;
-    this.categoryName = categoryName;
-    this.categoryIcon = categoryIcon;
-    this.slug = slug;
-    this.courses = new ArrayList<>();
-  }
+    public Category(int id, String categoryName, String iconUrl, String description) {
+        this.id = id;
+        this.categoryName = categoryName;
+        this.iconUrl = iconUrl;
+        this.description = description;
+        this.courses = new ArrayList<>();
+        this.isHorizontal = false; // Default to vertical
+    }
 
-  public List<Course> getCourses() {
-    return courses;
-  }
+    // Existing getters and setters...
 
-  public void addCourse(Course course) {
-    courses.add(course);
-  }
+    public boolean isHorizontal() {
+        return isHorizontal;
+    }
 
-  public String getCategoryName() {
-    return this.categoryName;
-  }
+    public void setIsHorizontal(boolean isHorizontal) {
+        this.isHorizontal = isHorizontal;
+    }
 
-  public void setCategoryName(String categoryName) {
-    this.categoryName = categoryName;
-  }
+    public List<Course> getCourses() {
+        return courses;
+    }
 
-  public String getCategoryIcon() {
-    return this.categoryIcon;
-  }
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
 
-  public void setCategoryIcon(String categoryIcon) {
-    this.categoryIcon = categoryIcon;
-  }
-
-  public String getSlug() {
-    return this.slug;
-  }
-
-  public void setSlug(String slug) {
-    this.slug = slug;
-  }
-
-  public int getId() {
-    return this.Id;
-  }
-
-  public void setId(int Id) {
-    this.Id = Id;
-  }
+    public String getCategoryName() {
+        return categoryName;
+    }
 }

@@ -10,8 +10,11 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.chaosdev.ngpad.R;
-import com.chaosdev.ngpad.model.main.Category;
+import com.chaosdev.ngpad.model.Category;
 import com.chaosdev.ngpad.model.main.Course;
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class NgPadAdapter extends BaseExpandableListAdapter {
@@ -36,7 +39,7 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
     public int getChildrenCount(int groupPosition) {
         // Return 0 for horizontal groups to disable expansion
         Category category = getGroup(groupPosition);
-        return category.isHorizontal() ? 0 : category.getCourses().size();
+        return new ArrayList<Integer>(Arrays.asList(2,4)).contains(groupPosition) ? 0 : category.getCourses().size();
     }
 
     @Override
@@ -66,7 +69,7 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupType(int groupPosition) {
-        return getGroup(groupPosition).isHorizontal() ? TYPE_HORIZONTAL_GROUP : TYPE_VERTICAL_GROUP;
+        return new ArrayList<Integer>(Arrays.asList(2,5,9)).contains(groupPosition) ? TYPE_HORIZONTAL_GROUP : TYPE_VERTICAL_GROUP;
     }
 
     @Override
@@ -89,7 +92,7 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
             } else {
                 holder = (VerticalGroupHolder) convertView.getTag();
             }
-            holder.title.setText(category.getCategoryName());
+            holder.title.setText(category.getName());
             holder.indicator.setRotation(isExpanded ? 180 : 0);
         } else {
             // Horizontal scrolling group
@@ -101,7 +104,7 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
             } else {
                 holder = (HorizontalGroupHolder) convertView.getTag();
             }
-            holder.title.setText(category.getCategoryName());
+            holder.title.setText(category.getName());
             setupHorizontalRecyclerView(holder.recyclerView, category.getCourses());
         }
         return convertView;
@@ -115,7 +118,7 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.course_card, parent, false);
         }
         TextView lessonTitle = convertView.findViewById(R.id.childItem);
-        lessonTitle.setText(course.getCourseTitle());
+        lessonTitle.setText(course.getTitle());
         return convertView;
     }
 

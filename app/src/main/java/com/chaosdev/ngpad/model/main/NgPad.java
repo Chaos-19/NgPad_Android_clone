@@ -1,5 +1,6 @@
 package com.chaosdev.ngpad.model.main;
 
+import com.chaosdev.ngpad.model.Category;
 import java.util.ArrayList;
 import java.util.List;
 

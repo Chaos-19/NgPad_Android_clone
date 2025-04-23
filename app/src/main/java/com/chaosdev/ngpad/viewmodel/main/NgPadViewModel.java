@@ -1,5 +1,59 @@
 package com.chaosdev.ngpad.viewmodel.main;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+
+import com.chaosdev.ngpad.data.repository.NgPadRepository;
+import com.chaosdev.ngpad.model.Category;
+import com.chaosdev.ngpad.model.main.Course;
+import com.chaosdev.ngpad.model.main.Lesson;
+import com.chaosdev.ngpad.model.main.NgPad;
+
+
+public class NgPadViewModel extends ViewModel {
+    private MutableLiveData<NgPad> ngPadLiveData = new MutableLiveData<>();
+    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
+    private NgPadRepository repository = new NgPadRepository();
+
+    public void fetchNgPadData() {
+        repository.fetchNgPadData(new NgPadRepository.NgPadCallback() {
+            @Override
+            public void onCategoriesFetched(NgPad ngPad) {
+                ngPadLiveData.setValue(ngPad);
+            }
+
+            @Override
+            public void onCoursesFetched(Category category) {
+                ngPadLiveData.setValue(ngPadLiveData.getValue()); // Trigger UI update
+            }
+
+            @Override
+            public void onLessonsFetched(Course course) {
+                ngPadLiveData.setValue(ngPadLiveData.getValue()); // Trigger UI update
+            }
+
+            @Override
+            public void onSubLessonsFetched(Lesson lesson) {
+                ngPadLiveData.setValue(ngPadLiveData.getValue()); // Trigger UI update
+            }
+
+            @Override
+            public void onError(String message) {
+                errorMessage.setValue(message);
+            }
+        });
+    }
+
+    public LiveData<NgPad> getNgPadLiveData() {
+        return ngPadLiveData;
+    }
+
+    public LiveData<String> getErrorMessage() {
+        return errorMessage;
+    }
+}
+/*
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.chaosdev.ngpad.model.main.Category;
@@ -43,3 +97,4 @@ public class NgPadViewModel extends ViewModel {
         return ngPadLiveData;
     }
 }
+*/

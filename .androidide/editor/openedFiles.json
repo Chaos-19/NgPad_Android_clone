@@ -1,0 +1,20 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/datasource/remote/ApiService.java",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 1302,
+          "line": 46
+        },
+        "start": {
+          "column": 0,
+          "index": 1302,
+          "line": 46
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/datasource/remote/ApiService.java"
+}

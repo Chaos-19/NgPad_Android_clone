@@ -1,44 +1,50 @@
-package com.chaosdev.ngpad.model.main;
+package com.chaosdev.ngpad.model;
 
+import com.chaosdev.ngpad.model.main.Course;
+import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Category {
-    private int id;
-    private String categoryName;
-    private String iconUrl;
-    private String description;
-    private List<Course> courses;
-    private boolean isHorizontal; // New field
+  @SerializedName("id")
+  private int id;
 
-    public Category(int id, String categoryName, String iconUrl, String description) {
-        this.id = id;
-        this.categoryName = categoryName;
-        this.iconUrl = iconUrl;
-        this.description = description;
-        this.courses = new ArrayList<>();
-        this.isHorizontal = false; // Default to vertical
-    }
+  @SerializedName("name")
+  private String name;
 
-    // Existing getters and setters...
+  @SerializedName("slug")
+  private String slug;
 
-    public boolean isHorizontal() {
-        return isHorizontal;
-    }
+  @SerializedName("icon")
+  private String icon;
 
-    public void setIsHorizontal(boolean isHorizontal) {
-        this.isHorizontal = isHorizontal;
-    }
+  //private List<Course> courses = new ArrayList<>();
+    Set<Category> courses = new LinkedHashSet<>();
 
-    public List<Course> getCourses() {
-        return courses;
-    }
+  // Getters and addCourse() method
+  public int getId() {
+    return id;
+  }
 
-    public void addCourse(Course course) {
-        courses.add(course);
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getCategoryName() {
-        return categoryName;
-    }
+  public String getSlug() {
+    return slug;
+  }
+
+  public String getIcon() {
+    return icon;
+  }
+
+  public List<Course> getCourses() {
+    return courses;
+  }
+
+  public void addCourse(Course course) {
+    courses.add(course);
+  }
 }

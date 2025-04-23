@@ -3,7 +3,7 @@
      xmlns:android="http://schemas.android.com/apk/res/android"
      xmlns:app="http://schemas.android.com/apk/res-auto"
      android:layout_height="220dp"
-     android:layout_width="300dp"
+     android:layout_width="320dp"
      android:layout_marginBottom="0dp"
      android:layout_marginEnd="0dp"
      app:cardElevation="6dp"
@@ -11,7 +11,7 @@
      app:cardCornerRadius="8dp">
 
     <LinearLayout
-         android:layout_height="wrap_content"
+         android:layout_height="match_parent"
          android:layout_width="match_parent"
          android:gravity="center_vertical"
          android:padding="12dp"
@@ -21,18 +21,29 @@
              android:layout_height="80dp"
              android:layout_width="100dp"
              android:layout_marginBottom="10dp"
-             android:layout_marginEnd="12dp"
              android:src="@drawable/angular"
              android:contentDescription="Info icon" />
 
         <TextView
              android:layout_height="wrap_content"
              android:layout_width="wrap_content"
-             android:textSize="23sp"
+             android:layout_marginVertical="5dp"
+             android:textSize="16dp"
              android:fontFamily="sans-serif"
              android:layout_weight="1"
              android:id="@+id/h_child_text"
              android:text="Sample Text" />
+
+        <TextView
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:paddingRight="8dp"
+             android:textSize="12dp"
+             android:fontFamily="sans-serif"
+             android:maxLines="3"
+             android:layout_weight="1"
+             android:id="@+id/description"
+             android:text="Webpack is a static module bundler used for JavaScript applications. Webpack understands only JavaScript and JSON files, It transforms front-end assets such as HTML, CSS, and images into valid modules if the corresponding loaders are included." />
 
     </LinearLayout>
 

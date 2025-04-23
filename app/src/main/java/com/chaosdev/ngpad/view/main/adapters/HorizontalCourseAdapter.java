@@ -27,7 +27,7 @@ public class HorizontalCourseAdapter extends RecyclerView.Adapter<HorizontalCour
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Course course = courses.get(position);
-        holder.textView.setText(course.getCourseTitle());
+        holder.textView.setText(course.getTitle());
     }
 
     @Override

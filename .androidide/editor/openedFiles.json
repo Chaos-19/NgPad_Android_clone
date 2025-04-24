@@ -1,20 +1,65 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/datasource/remote/ApiService.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/main/adapters/NgPadAdapter.java",
+      "selection": {
+        "end": {
+          "column": 8,
+          "index": 3366,
+          "line": 114
+        },
+        "start": {
+          "column": 5,
+          "index": 3230,
+          "line": 110
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/utils/SvgLoader.java",
       "selection": {
         "end": {
           "column": 0,
-          "index": 1302,
-          "line": 46
+          "index": 34,
+          "line": 1
         },
         "start": {
           "column": 0,
-          "index": 1302,
-          "line": 46
+          "index": 34,
+          "line": 1
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/res/layout/category_list_header.xml",
+      "selection": {
+        "end": {
+          "column": 52,
+          "index": 2176,
+          "line": 58
+        },
+        "start": {
+          "column": 52,
+          "index": 2176,
+          "line": 58
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/utils/StringUtils.java",
+      "selection": {
+        "end": {
+          "column": 16,
+          "index": 381,
+          "line": 12
+        },
+        "start": {
+          "column": 16,
+          "index": 381,
+          "line": 12
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/datasource/remote/ApiService.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/main/adapters/NgPadAdapter.java"
 }

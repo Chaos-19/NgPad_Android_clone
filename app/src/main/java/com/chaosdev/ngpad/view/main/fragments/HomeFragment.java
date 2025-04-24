@@ -1,6 +1,7 @@
 package com.chaosdev.ngpad.ui.main;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,11 @@ import com.chaosdev.ngpad.databinding.FragmentTabHomeBinding;
 import com.chaosdev.ngpad.model.main.NgPad;
 import com.chaosdev.ngpad.view.main.adapters.NgPadAdapter;
 import com.chaosdev.ngpad.viewmodel.main.NgPadViewModel;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HomeFragment extends Fragment {
+  private static final String TAG = "HomeFragment";
   private FragmentTabHomeBinding binding;
   private ExpandableListView expandableListView;
   private NgPadViewModel viewModel;
@@ -27,9 +31,13 @@ public class HomeFragment extends Fragment {
     expandableListView = binding.expListView;
 
     viewModel = new ViewModelProvider(this).get(NgPadViewModel.class);
-    viewModel.getNgPadLiveData().observe(this, this::updateUI);
-    viewModel.getErrorMessage().observe(this, this::showError);
-    viewModel.fetchNgPadData();
+
+    // Observe LiveData only if not already observing
+    if (!viewModel.getNgPadLiveData().hasObservers()) {
+      viewModel.getNgPadLiveData().observe(getViewLifecycleOwner(), this::updateUI);
+      viewModel.getErrorMessage().observe(getViewLifecycleOwner(), this::showError);
+      viewModel.fetchNgPadData(); // Fetch data only once
+    }
 
     expandableListView.setOnGroupExpandListener(
         groupPosition ->
@@ -45,16 +53,23 @@ public class HomeFragment extends Fragment {
   }
 
   private void updateUI(NgPad ngPad) {
-    // Update your UI here, e.g., set adapter data for a RecyclerView
-    // Example: recyclerViewAdapter.setData(ngPad.getCategories());
- Toast.makeText(requireContext(), "Updating UI : " + ngPad.getCategories().size(), Toast.LENGTH_SHORT).show();
+    Log.d(TAG, "Updating UI with " + ngPad.getCategories().size() + " categories");
+    Toast.makeText(
+            requireContext(), "Updating UI: " + ngPad.getCategories().size(), Toast.LENGTH_SHORT)
+        .show();
 
     ngPadAdapter = new NgPadAdapter(requireContext(), ngPad.getCategories());
     expandableListView.setAdapter(ngPadAdapter);
-        
+
+    // Expand all groups
+    int groupCount = ngPadAdapter.getGroupCount();
+    for (int i = 0; i < groupCount; i++) {
+      if (!(Arrays.asList(2, 5, 9)).contains(i)) expandableListView.expandGroup(i);
+    }
   }
 
   private void showError(String message) {
+    Log.e(TAG, "Error: " + message);
     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
   }
 

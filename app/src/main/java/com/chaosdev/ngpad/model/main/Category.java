@@ -20,8 +20,8 @@ public class Category {
   @SerializedName("icon")
   private String icon;
 
-  //private List<Course> courses = new ArrayList<>();
-    Set<Category> courses = new LinkedHashSet<>();
+  private List<Course> courses = new ArrayList<>();
+  
 
   // Getters and addCourse() method
   public int getId() {

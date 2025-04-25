@@ -1,6 +1,7 @@
 package com.chaosdev.ngpad.view.main.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.util.Log;
@@ -17,6 +18,7 @@ import com.chaosdev.ngpad.model.Category;
 import com.chaosdev.ngpad.model.main.Course;
 import com.chaosdev.ngpad.utils.StringUtils;
 import com.chaosdev.ngpad.utils.SvgLoader;
+import com.chaosdev.ngpad.view.course.CourseDetailActivity;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -108,17 +110,12 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
 
       ImageView svgImageView = convertView.findViewById(R.id.icon_category);
 
-      /*
-       SvgLoader.loadSvgFromUrl(svgImageView, category.getIcon() + ".svg");
-
-       Log.d("Imagr Url", category.getIcon());
-      */
-
-      String imageUrl = category.getIcon() + ".svg";
+      String imageUrl = category.getIcon() + "";
       svgImageView.setTag(imageUrl); // Set the tag before loading
-      SvgLoader.loadSvgFromUrl(svgImageView, imageUrl);
+      SvgLoader.loadSvgFromUrl(context, svgImageView, imageUrl, R.drawable.advwebdev);
 
       holder.indicator.setRotation(isExpanded ? 180 : 0);
+
     } else {
       // Horizontal scrolling group
       HorizontalGroupHolder holder;
@@ -130,7 +127,23 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
       } else {
         holder = (HorizontalGroupHolder) convertView.getTag();
       }
-      holder.title.setText(category.getName());
+      holder.title.setText(StringUtils.capitilizeStr(category.getName()));
+
+      ImageView svgImageView = convertView.findViewById(R.id.icon_category_h);
+
+      String imageUrl = category.getIcon() + "";
+      svgImageView.setTag(imageUrl); // Set the tag before loading
+      SvgLoader.loadSvgFromUrl(context, svgImageView, imageUrl, R.drawable.advwebdev);
+
+      holder.recyclerView.addOnScrollListener(
+          new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+              if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                Log.d("MainActivity", "Scroll stopped");
+              }
+            }
+          });
 
       setupHorizontalRecyclerView(holder.recyclerView, category.getCourses());
     }
@@ -149,8 +162,24 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
     if (convertView == null) {
       convertView = LayoutInflater.from(context).inflate(R.layout.course_card, parent, false);
     }
+    ImageView courseIcon = convertView.findViewById(R.id.course_icon);
+    SvgLoader.loadSvgFromUrl(context, courseIcon, course.getIcon(), R.drawable.advwebdev);
     TextView lessonTitle = convertView.findViewById(R.id.childItem);
+
+    TextView courseDescription = convertView.findViewById(R.id.description);
+    courseDescription.setText(course.getDescription());
+
     lessonTitle.setText(course.getTitle());
+
+    // Attach a click listener to the child view
+    convertView.setOnClickListener(
+        v -> {
+          // Navigate to CourseDetailActivity
+          Intent intent = new Intent(context, CourseDetailActivity.class);
+          intent.putExtra("course_id", course.getId());
+          context.startActivity(intent);
+        });
+
     return convertView;
   }
 
@@ -163,7 +192,7 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
   private void setupHorizontalRecyclerView(RecyclerView recyclerView, List<Course> courses) {
     recyclerView.setLayoutManager(
         new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-    HorizontalCourseAdapter adapter = new HorizontalCourseAdapter(courses);
+    HorizontalCourseAdapter adapter = new HorizontalCourseAdapter(context, courses);
     recyclerView.setAdapter(adapter);
   }
 

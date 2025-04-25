@@ -4,9 +4,8 @@
      xmlns:app="http://schemas.android.com/apk/res-auto"
      android:layout_height="wrap_content"
      android:layout_width="match_parent"
-     android:layout_marginBottom="0dp"
-     android:layout_marginEnd="0dp"
-     android:background="#FFF"
+     android:layout_marginBottom="20dp"
+     android:layout_marginEnd="20dp"
      app:cardElevation="6dp"
      app:cardUseCompatPadding="true"
      android:layout_marginStart="6dp"
@@ -16,8 +15,7 @@
          android:layout_height="wrap_content"
          android:layout_width="match_parent"
          android:gravity="center_vertical"
-         android:background="#654"
-         android:padding="12dp"
+         android:padding="20dp"
          android:orientation="horizontal">
 
         <ImageView
@@ -25,17 +23,38 @@
              android:layout_width="54dp"
              android:layout_marginEnd="12dp"
              android:src="@drawable/angular"
-             android:contentDescription="Info icon" />
+             android:contentDescription="Info icon"
+             android:id="@+id/course_icon" />
 
-        <TextView
+        <LinearLayout
              android:layout_height="wrap_content"
-             android:layout_width="0dp"
-             android:textSize="16sp"
-             android:fontFamily="sans-serif"
-             android:textColor="@color/material_on_surface_emphasis_medium"
-             android:layout_weight="1"
-             android:id="@+id/childItem"
-             android:text="Sample Text" />
+             android:layout_width="wrap_content"
+             android:orientation="vertical">
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:textSize="19sp"
+                 android:fontFamily="sans-serif"
+                 android:id="@+id/childItem"
+                 android:text="Sample Text"
+                 android:textStyle="bold" />
+
+            <View
+                 android:layout_height="12dp"
+                 android:layout_width="wrap_content" />
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:paddingRight="40dp"
+                 android:ellipsize="end"
+                 android:textSize="13dp"
+                 android:maxLines="3"
+                 android:text="HTML (HyperText Markup Language) is the programming language that is used to structure a web page and its content."
+                 android:id="@+id/description" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

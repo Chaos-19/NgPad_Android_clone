@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
     buildToolsVersion "33.0.0"
 
     defaultConfig {
@@ -44,5 +44,15 @@ dependencies {
     
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.caverock:androidsvg:1.4'
+    
+    implementation "androidx.room:room-runtime:2.5.0"
+    annotationProcessor "androidx.room:room-compiler:2.5.0"
+    // Add sqlite-jdbc fix for AndroidIDE (choose one method)
+    
+    // Method 1: Exclude and redefine sqlite-jdbc
+    annotationProcessor("androidx.room:room-compiler:2.5.0") {
+        exclude group: 'org.xerial', module: 'sqlite-jdbc'
+    }
+    annotationProcessor "org.xerial:sqlite-jdbc:3.40.1.0"
     
 }

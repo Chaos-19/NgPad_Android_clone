@@ -1,57 +1,92 @@
 package com.chaosdev.ngpad.model.main;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity(tableName = "lessons",
+        foreignKeys = {
+                @ForeignKey(entity = Course.class,
+                        parentColumns = "id",
+                        childColumns = "courseId",
+                        onDelete = ForeignKey.CASCADE),
+                @ForeignKey(entity = Lesson.class,
+                        parentColumns = "id",
+                        childColumns = "parentLessonId",
+                        onDelete = ForeignKey.CASCADE)
+        })
 public class Lesson {
-  @SerializedName("id")
-  private String id;
+    @PrimaryKey
+    @SerializedName("id")
+    private int id;
 
-  @SerializedName("title")
-  private String title;
+    @SerializedName("title")
+    private String title;
 
-  @SerializedName("content")
-  private String content;
+    @SerializedName("content")
+    private String content;
 
-  @SerializedName("parent_type")
-  private String parentType;
+    private int courseId; // Foreign key to Course (if directly under a course)
+    private Integer parentLessonId; // Foreign key to parent Lesson (if nested)
 
-  @SerializedName("parent_id")
-  private String parentId;
+    @Ignore
+    @SerializedName("sections")
+    private List<Lesson> subLessons = new ArrayList<>();
 
-  private List<Lesson> subLessons = new ArrayList<>();
+    // Getters and setters
+    public int getId() {
+        return id;
+    }
 
-  // Getters
-  public String getId() {
-    return id;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-  public String getTitle() {
-    return title;
-  }
+    public String getTitle() {
+        return title;
+    }
 
-  public String getContent() {
-    return content;
-  }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-  public String getParentType() {
-    return parentType;
-  }
+    public String getContent() {
+        return content;
+    }
 
-  public String getParentId() {
-    return parentId;
-  }
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-  public List<Lesson> getSubLessons() {
-    return subLessons;
-  }
+    public int getCourseId() {
+        return courseId;
+    }
 
-  public void addSubLesson(Lesson lesson) {
-    subLessons.add(lesson);
-  }
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
 
-  public boolean isContainer() {
-    return content == null || content.isEmpty();
-  }
+    public Integer getParentLessonId() {
+        return parentLessonId;
+    }
+
+    public void setParentLessonId(Integer parentLessonId) {
+        this.parentLessonId = parentLessonId;
+    }
+
+    public List<Lesson> getSubLessons() {
+        return subLessons;
+    }
+
+    public void addSubLesson(Lesson subLesson) {
+        subLessons.add(subLesson);
+    }
+
+    public boolean isContainer() {
+        return content == null;
+    }
 }

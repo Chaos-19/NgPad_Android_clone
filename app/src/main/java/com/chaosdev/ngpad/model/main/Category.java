@@ -1,5 +1,8 @@
 package com.chaosdev.ngpad.model;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 import com.chaosdev.ngpad.model.main.Course;
 import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
@@ -7,44 +10,62 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+@Entity(tableName = "categories")
 public class Category {
-  @SerializedName("id")
-  private int id;
+    @PrimaryKey
+    @SerializedName("id")
+    private int id;
 
-  @SerializedName("name")
-  private String name;
+    @SerializedName("name")
+    private String name;
 
-  @SerializedName("slug")
-  private String slug;
+    @SerializedName("icon")
+    private String iconUrl;
 
-  @SerializedName("icon")
-  private String icon;
+    @SerializedName("slug")
+    private String slug;
 
-  private List<Course> courses = new ArrayList<>();
-  
+    @Ignore // Room will ignore this field since we'll store courses in a separate table
+    private List<Course> courses = new ArrayList<>();
 
-  // Getters and addCourse() method
-  public int getId() {
-    return id;
-  }
+    // Getters and setters
+    public int getId() {
+        return id;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-  public String getSlug() {
-    return slug;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public String getIcon() {
-    return icon;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public List<Course> getCourses() {
-    return courses;
-  }
+    public String getIconUrl() {
+        return iconUrl;
+    }
 
-  public void addCourse(Course course) {
-    courses.add(course);
-  }
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
 }

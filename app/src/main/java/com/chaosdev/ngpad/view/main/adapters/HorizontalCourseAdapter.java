@@ -1,6 +1,7 @@
 package com.chaosdev.ngpad.view.main.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chaosdev.ngpad.R;
 import com.chaosdev.ngpad.model.main.Course;
 import com.chaosdev.ngpad.utils.SvgLoader;
+import com.chaosdev.ngpad.view.course.CourseDetailActivity;
 import java.util.List;
 
 public class HorizontalCourseAdapter
@@ -41,6 +43,14 @@ public class HorizontalCourseAdapter
 
     SvgLoader.loadSvgFromUrl(
         this.context, holder.courseIcon, course.getIcon(), R.drawable.advwebdev);
+
+    holder.itemView.setOnClickListener(
+        v -> {
+          // Navigate to CourseDetailActivity
+          Intent intent = new Intent(context, CourseDetailActivity.class);
+          intent.putExtra("course_id", course.getId());
+          context.startActivity(intent);
+        });
   }
 
   @Override

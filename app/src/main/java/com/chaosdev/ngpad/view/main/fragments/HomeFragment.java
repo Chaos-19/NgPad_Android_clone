@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import com.chaosdev.ngpad.databinding.FragmentTabHomeBinding;
 import com.chaosdev.ngpad.model.main.NgPad;
+import com.chaosdev.ngpad.view.main.NgPadViewModelFactory;
 import com.chaosdev.ngpad.view.main.adapters.NgPadAdapter;
 import com.chaosdev.ngpad.viewmodel.main.NgPadViewModel;
 import java.util.ArrayList;
@@ -30,7 +31,9 @@ public class HomeFragment extends Fragment {
     View root = binding.getRoot();
     expandableListView = binding.expListView;
 
-    viewModel = new ViewModelProvider(this).get(NgPadViewModel.class);
+    NgPadViewModelFactory factory = new NgPadViewModelFactory(requireContext());
+    viewModel = new ViewModelProvider(this, factory).get(NgPadViewModel.class);
+
 
     // Observe LiveData only if not already observing
     if (!viewModel.getNgPadLiveData().hasObservers()) {

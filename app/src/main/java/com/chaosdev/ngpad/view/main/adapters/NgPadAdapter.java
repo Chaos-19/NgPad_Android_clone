@@ -110,7 +110,7 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
 
       ImageView svgImageView = convertView.findViewById(R.id.icon_category);
 
-      String imageUrl = category.getIcon() + "";
+      String imageUrl = category.getIconUrl() + "";
       svgImageView.setTag(imageUrl); // Set the tag before loading
       SvgLoader.loadSvgFromUrl(context, svgImageView, imageUrl, R.drawable.advwebdev);
 
@@ -131,7 +131,7 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
 
       ImageView svgImageView = convertView.findViewById(R.id.icon_category_h);
 
-      String imageUrl = category.getIcon() + "";
+      String imageUrl = category.getIconUrl() + "";
       svgImageView.setTag(imageUrl); // Set the tag before loading
       SvgLoader.loadSvgFromUrl(context, svgImageView, imageUrl, R.drawable.advwebdev);
 

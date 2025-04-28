@@ -1,32 +1,47 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/model/main/Category.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/repository/NgPadRepository.java",
       "selection": {
         "end": {
-          "column": 5,
-          "index": 1025,
-          "line": 45
+          "column": 17,
+          "index": 19040,
+          "line": 441
         },
         "start": {
-          "column": 5,
-          "index": 1025,
-          "line": 45
+          "column": 17,
+          "index": 19040,
+          "line": 441
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/model/main/Course.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/model/main/Section.java",
       "selection": {
         "end": {
-          "column": 25,
-          "index": 1374,
-          "line": 58
+          "column": 12,
+          "index": 584,
+          "line": 22
         },
         "start": {
-          "column": 18,
-          "index": 1367,
-          "line": 58
+          "column": 12,
+          "index": 584,
+          "line": 22
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/course/adapter/LessonAdapter.java",
+      "selection": {
+        "end": {
+          "column": 57,
+          "index": 3626,
+          "line": 99
+        },
+        "start": {
+          "column": 57,
+          "index": 3626,
+          "line": 99
         }
       }
     },
@@ -34,14 +49,14 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/model/main/Lesson.java",
       "selection": {
         "end": {
-          "column": 5,
-          "index": 1694,
-          "line": 66
+          "column": 14,
+          "index": 909,
+          "line": 35
         },
         "start": {
-          "column": 5,
-          "index": 1694,
-          "line": 66
+          "column": 14,
+          "index": 909,
+          "line": 35
         }
       }
     },
@@ -49,104 +64,29 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/database/NgPadDao.java",
       "selection": {
         "end": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 66,
+          "index": 1337,
+          "line": 40
         },
         "start": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 66,
+          "index": 1337,
+          "line": 40
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/database/AppDatabase.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/section/SectionDetailActivity.java",
       "selection": {
         "end": {
-          "column": 41,
-          "index": 41,
-          "line": 0
+          "column": 16,
+          "index": 1161,
+          "line": 30
         },
         "start": {
-          "column": 41,
-          "index": 41,
-          "line": 0
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/repository/NgPadRepository.java",
-      "selection": {
-        "end": {
-          "column": 70,
-          "index": 9257,
-          "line": 208
-        },
-        "start": {
-          "column": 70,
-          "index": 9257,
-          "line": 208
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/viewmodel/main/NgPadViewModel.java",
-      "selection": {
-        "end": {
-          "column": 1,
-          "index": 2291,
-          "line": 73
-        },
-        "start": {
-          "column": 1,
-          "index": 2291,
-          "line": 73
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/main/NgPadViewModelFactory.java",
-      "selection": {
-        "end": {
-          "column": 38,
-          "index": 618,
-          "line": 17
-        },
-        "start": {
-          "column": 38,
-          "index": 618,
-          "line": 17
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/main/fragments/HomeFragment.java",
-      "selection": {
-        "end": {
-          "column": 0,
-          "index": 1427,
-          "line": 38
-        },
-        "start": {
-          "column": 25,
-          "index": 1235,
-          "line": 33
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/main/fragments/InterviewFragment.java",
-      "selection": {
-        "end": {
-          "column": 0,
-          "index": 0,
-          "line": 0
-        },
-        "start": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 16,
+          "index": 1161,
+          "line": 30
         }
       }
     },
@@ -166,50 +106,20 @@
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/main/adapters/NgPadAdapter.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/database/AppDatabase.java",
       "selection": {
         "end": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 15,
+          "index": 516,
+          "line": 14
         },
         "start": {
-          "column": 0,
-          "index": 0,
-          "line": 0
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/main/adapters/HorizontalCourseAdapter.java",
-      "selection": {
-        "end": {
-          "column": 0,
-          "index": 2248,
-          "line": 73
-        },
-        "start": {
-          "column": 0,
-          "index": 2248,
-          "line": 73
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/utils/SvgLoader.java",
-      "selection": {
-        "end": {
-          "column": 6,
-          "index": 5556,
-          "line": 157
-        },
-        "start": {
-          "column": 0,
-          "index": 5550,
-          "line": 157
+          "column": 15,
+          "index": 516,
+          "line": 14
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/utils/SvgLoader.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/course/adapter/LessonAdapter.java"
 }

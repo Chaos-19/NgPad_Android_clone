@@ -46,11 +46,6 @@ public class NgPadViewModel extends ViewModel {
             }
 
             @Override
-            public void onSubLessonsFetched(Lesson lesson) {
-                ngPadLiveData.setValue(repository.getNgPad());
-            }
-
-            @Override
             public void onError(String message) {
                 errorMessage.setValue(message);
                 hasFetched = false;

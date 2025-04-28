@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 import com.chaosdev.ngpad.databinding.ActivityMainBinding;
 import com.chaosdev.ngpad.ui.main.SectionsPagerAdapter;
+import com.chaosdev.ngpad.utils.SvgLoader;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+
+    SvgLoader.init(this);
 
     DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -49,5 +52,13 @@ public class MainActivity extends AppCompatActivity {
     viewPager.setAdapter(sectionsPagerAdapter);
     TabLayout tabs = binding.tabs;
     tabs.setupWithViewPager(viewPager);
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    if (isFinishing()) { // Check if the Activity is finishing (app is closing)
+      SvgLoader.shutdown();
+    }
   }
 }

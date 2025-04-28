@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     app:cardElevation="6dp"
+     app:cardUseCompatPadding="true"
+     android:layout_marginStart="6dp"
+     app:cardCornerRadius="8dp">
+
+    <LinearLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:gravity="center_vertical"
+         android:padding="20dp"
+         android:orientation="horizontal">
+
+        <ImageView
+             android:layout_height="54dp"
+             android:layout_width="54dp"
+             android:layout_marginEnd="12dp"
+             android:src="@drawable/angular"
+             android:contentDescription="Info icon"
+             android:id="@+id/section_icon" />
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:orientation="vertical">
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:textSize="19sp"
+                 android:fontFamily="sans-serif"
+                 android:id="@+id/section_title"
+                 android:text="Sample Text"
+                 android:textStyle="bold" />
+
+            <View
+                 android:layout_height="12dp"
+                 android:layout_width="wrap_content" />
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:paddingRight="40dp"
+                 android:ellipsize="end"
+                 android:textSize="13dp"
+                 android:maxLines="3"
+                 android:text="HTML (HyperText Markup Language) is the programming language that is used to structure a web page and its content."
+                 android:id="@+id/description" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

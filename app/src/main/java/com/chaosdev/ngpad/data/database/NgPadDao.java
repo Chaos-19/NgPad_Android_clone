@@ -4,52 +4,80 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import androidx.room.Transaction;
 import com.chaosdev.ngpad.model.Category;
+import com.chaosdev.ngpad.model.SvgCacheEntry;
 import com.chaosdev.ngpad.model.main.Course;
 import com.chaosdev.ngpad.model.main.Lesson;
-
+import com.chaosdev.ngpad.model.main.Section;
 import java.util.List;
 
 @Dao
 public interface NgPadDao {
-  @Insert(onConflict = OnConflictStrategy.REPLACE)
-  void insertCategories(List<Category> categories);
+    // Category methods
+    @Query("SELECT * FROM categories")
+    List<Category> getAllCategories();
 
-  @Insert(onConflict = OnConflictStrategy.REPLACE)
-  void insertCourses(List<Course> courses);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertCategories(List<Category> categories);
 
-  @Insert(onConflict = OnConflictStrategy.REPLACE)
-  void insertLessons(List<Lesson> lessons);
+    // Course methods
+    @Query("SELECT * FROM courses WHERE categoryId = :categoryId")
+    List<Course> getCoursesForCategory(int categoryId);
 
-  @Query("SELECT * FROM categories")
-  List<Category> getAllCategories();
+    @Query("SELECT * FROM courses WHERE id = :courseId")
+    Course getCourseById(int courseId);
 
-  @Query("SELECT * FROM courses WHERE categoryId = :categoryId")
-  List<Course> getCoursesForCategory(int categoryId);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertCourses(List<Course> courses);
 
-  @Query("SELECT * FROM lessons WHERE courseId = :courseId AND parentLessonId IS NULL")
-  List<Lesson> getTopLevelLessonsForCourse(int courseId);
+    // Section methods
+    @Query("SELECT * FROM sections WHERE courseId = :courseId")
+    List<Section> getSectionsForCourse(int courseId);
 
-  @Query("SELECT * FROM lessons WHERE parentLessonId = :parentLessonId")
-  List<Lesson> getSubLessonsForLesson(int parentLessonId);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertSections(List<Section> sections);
 
-  @Query("SELECT * FROM courses WHERE id = :courseId")
-  Course getCourseById(int courseId);
+    // Lesson methods
+    @Query("SELECT * FROM lessons WHERE courseId = :courseId AND sectionId IS NULL")
+    List<Lesson> getDirectLessonsForCourse(int courseId);
 
-  @Query("DELETE FROM categories")
-  void clearCategories();
+    @Query("SELECT * FROM lessons WHERE courseId = :courseId AND sectionId = :sectionId")
+    List<Lesson> getLessonsForSection(int courseId, String sectionId);
 
-  @Query("DELETE FROM courses")
-  void clearCourses();
+    @Query("SELECT * FROM lessons WHERE sectionId = :sectionId")
+    List<Lesson> getLessonsBySectionId(String sectionId);
 
-  @Query("DELETE FROM lessons")
-  void clearLessons();
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertLessons(List<Lesson> lessons);
 
-  @Transaction
-  default void clearAllData() {
-    clearCategories();
-    clearCourses();
-    clearLessons();
-  }
+    // SvgCacheEntry methods
+    @Query("SELECT * FROM svg_cache WHERE url = :url")
+    SvgCacheEntry getSvgCacheEntry(String url);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertSvgCacheEntry(SvgCacheEntry entry);
+
+    @Query("DELETE FROM svg_cache")
+    void clearSvgCache();
+
+    // Clear all data
+    @Query("DELETE FROM categories")
+    void clearCategories();
+
+    @Query("DELETE FROM courses")
+    void clearCourses();
+
+    @Query("DELETE FROM lessons")
+    void clearLessons();
+
+    @Query("DELETE FROM sections")
+    void clearSections();
+
+    default void clearAllData() {
+        clearCategories();
+        clearCourses();
+        clearLessons();
+        clearSections();
+        clearSvgCache();
+    }
 }

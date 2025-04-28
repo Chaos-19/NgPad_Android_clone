@@ -3,6 +3,7 @@ package com.chaosdev.ngpad.model.main;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import com.chaosdev.ngpad.model.Category;
 import com.google.gson.annotations.SerializedName;
@@ -10,11 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Entity(tableName = "courses",
-        foreignKeys = @ForeignKey(entity = Category.class,
-                parentColumns = "id",
-                childColumns = "categoryId",
-                onDelete = ForeignKey.CASCADE))
+@Entity(
+    tableName = "courses",
+    foreignKeys = @ForeignKey(
+        entity = Category.class,
+        parentColumns = "id",
+        childColumns = "categoryId",
+        onDelete = ForeignKey.CASCADE
+    ),
+    indices = {@Index(value = {"categoryId"})}
+)
 public class Course implements android.os.Parcelable {
     @PrimaryKey
     @SerializedName("id")
@@ -29,17 +35,23 @@ public class Course implements android.os.Parcelable {
     @SerializedName("description")
     private String description;
 
-    private int categoryId; // Foreign key to Category
+    private int categoryId;
+    
+    @SerializedName("is_nested")
+    private boolean isNested;
 
     @Ignore
     private List<Lesson> lessons = new ArrayList<>();
 
-    // Constructor for Room
+    @Ignore
+    @SerializedName("sections")
+    private List<Section> sections = new ArrayList<>();
+
     public Course() {
         this.lessons = new ArrayList<>();
+        this.sections = new ArrayList<>();
     }
 
-    // Getters and setters
     public int getId() {
         return id;
     }
@@ -80,6 +92,14 @@ public class Course implements android.os.Parcelable {
         this.categoryId = categoryId;
     }
 
+    public boolean isNested() {
+        return isNested;
+    }
+
+    public void setIsNested(boolean isNested) {
+        this.isNested = isNested;
+    }
+
     public List<Lesson> getLessons() {
         return lessons;
     }
@@ -88,15 +108,25 @@ public class Course implements android.os.Parcelable {
         lessons.add(lesson);
     }
 
-    // Parcelable implementation (unchanged from your existing code)
+    public List<Section> getSections() {
+        return sections;
+    }
+
+    public void addSection(Section section) {
+        sections.add(section);
+    }
+
     protected Course(android.os.Parcel in) {
         id = in.readInt();
         title = in.readString();
         icon = in.readString();
         description = in.readString();
         categoryId = in.readInt();
+        isNested = in.readByte() != 0;
         lessons = new ArrayList<>();
         in.readList(lessons, Lesson.class.getClassLoader());
+        sections = new ArrayList<>();
+        in.readList(sections, Section.class.getClassLoader());
     }
 
     public static final Creator<Course> CREATOR = new Creator<Course>() {
@@ -123,7 +153,9 @@ public class Course implements android.os.Parcelable {
         dest.writeString(icon);
         dest.writeString(description);
         dest.writeInt(categoryId);
+        dest.writeByte((byte) (isNested ? 1 : 0));
         dest.writeList(lessons);
+        dest.writeList(sections);
     }
 
     @Override

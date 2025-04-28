@@ -2,23 +2,28 @@ package com.chaosdev.ngpad.model.main;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
-import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
-import java.util.ArrayList;
-import java.util.List;
 
-@Entity(tableName = "lessons",
-        foreignKeys = {
-                @ForeignKey(entity = Course.class,
-                        parentColumns = "id",
-                        childColumns = "courseId",
-                        onDelete = ForeignKey.CASCADE),
-                @ForeignKey(entity = Lesson.class,
-                        parentColumns = "id",
-                        childColumns = "parentLessonId",
-                        onDelete = ForeignKey.CASCADE)
-        })
+@Entity(
+    tableName = "lessons",
+    foreignKeys = {
+        @ForeignKey(
+            entity = Course.class,
+            parentColumns = "id",
+            childColumns = "courseId",
+            onDelete = ForeignKey.CASCADE
+        ),
+        @ForeignKey(
+            entity = Section.class,
+            parentColumns = "slug",
+            childColumns = "sectionId",
+            onDelete = ForeignKey.CASCADE
+        )
+    },
+    indices = {@Index(value = {"courseId"}), @Index(value = {"sectionId"})}
+)
 public class Lesson {
     @PrimaryKey
     @SerializedName("id")
@@ -30,14 +35,10 @@ public class Lesson {
     @SerializedName("content")
     private String content;
 
-    private int courseId; // Foreign key to Course (if directly under a course)
-    private Integer parentLessonId; // Foreign key to parent Lesson (if nested)
+    private int courseId;
 
-    @Ignore
-    @SerializedName("sections")
-    private List<Lesson> subLessons = new ArrayList<>();
+    private String sectionId; // Links to a Section; null if the lesson is directly under a course
 
-    // Getters and setters
     public int getId() {
         return id;
     }
@@ -70,23 +71,24 @@ public class Lesson {
         this.courseId = courseId;
     }
 
-    public Integer getParentLessonId() {
-        return parentLessonId;
+    public String getSectionId() {
+        return sectionId;
     }
 
-    public void setParentLessonId(Integer parentLessonId) {
-        this.parentLessonId = parentLessonId;
+    public void setSectionId(String sectionId) {
+        this.sectionId = sectionId;
     }
 
-    public List<Lesson> getSubLessons() {
-        return subLessons;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lesson lesson = (Lesson) o;
+        return id == lesson.id;
     }
 
-    public void addSubLesson(Lesson subLesson) {
-        subLessons.add(subLesson);
-    }
-
-    public boolean isContainer() {
-        return content == null;
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
     }
 }

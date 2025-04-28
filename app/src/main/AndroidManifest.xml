@@ -31,10 +31,8 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.Application"
         />
-        <activity
-            android:name=".view.course.CourseDetailActivity"
-            
-        />
+        <activity android:name=".view.course.CourseDetailActivity" />
+        <activity android:name=".view.section.SectionDetailActivity" />
     </application>
 
 </manifest>

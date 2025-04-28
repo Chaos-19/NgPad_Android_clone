@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
+import android.os.Build;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -164,12 +166,17 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
     }
     ImageView courseIcon = convertView.findViewById(R.id.course_icon);
     SvgLoader.loadSvgFromUrl(context, courseIcon, course.getIcon(), R.drawable.advwebdev);
-    TextView lessonTitle = convertView.findViewById(R.id.childItem);
+    TextView courseTitleV = convertView.findViewById(R.id.childItem);
 
     TextView courseDescription = convertView.findViewById(R.id.description);
     courseDescription.setText(course.getDescription());
 
-    lessonTitle.setText(course.getTitle());
+    String courseTitle =
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+            ? Html.fromHtml(course.getTitle(), Html.FROM_HTML_MODE_LEGACY).toString()
+            : Html.fromHtml(course.getTitle()).toString();
+
+    courseTitleV.setText(courseTitle);
 
     // Attach a click listener to the child view
     convertView.setOnClickListener(

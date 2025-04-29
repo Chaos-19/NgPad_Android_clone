@@ -39,7 +39,7 @@
                  android:textStyle="bold" />
 
             <View
-                 android:layout_height="12dp"
+                 android:layout_height="11dp"
                  android:layout_width="wrap_content" />
 
             <TextView
@@ -47,8 +47,8 @@
                  android:layout_width="wrap_content"
                  android:paddingRight="40dp"
                  android:ellipsize="end"
-                 android:textSize="13dp"
-                 android:maxLines="3"
+                 android:textSize="12dp"
+                 android:maxLines="4"
                  android:text="HTML (HyperText Markup Language) is the programming language that is used to structure a web page and its content."
                  android:id="@+id/description" />
 

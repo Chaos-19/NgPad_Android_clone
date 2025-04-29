@@ -45,11 +45,12 @@
                  android:layout_height="wrap_content"
                  android:layout_width="match_parent"
                  android:padding="16dp"
-                 android:orientation="vertical">
+                 android:orientation="vertical"
+                 android:paddingTop="23dp">
 
                 <ImageView
-                     android:layout_height="80dp"
-                     android:layout_width="100dp"
+                     android:layout_height="60dp"
+                     android:layout_width="70dp"
                      android:src="@drawable/angular"
                      android:contentDescription="Info icon"
                      android:id="@+id/course_icon" />
@@ -61,7 +62,7 @@
                 <TextView
                      android:layout_height="wrap_content"
                      android:layout_width="wrap_content"
-                     android:textSize="20sp"
+                     android:textSize="17sp"
                      android:id="@+id/courseIdTextView"
                      android:text="HTML (HyperText Markup Language) is the programming language that is used to structure a web page and its content." />
 

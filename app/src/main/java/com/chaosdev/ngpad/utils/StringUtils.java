@@ -1,5 +1,7 @@
 package com.chaosdev.ngpad.utils;
 
+import android.os.Build;
+import android.text.Html;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,4 +21,11 @@ public class StringUtils {
 
     return capitalizedData;
   }
+    
+    public static String escapSpacialCharacter(String input) {
+        return
+          Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+              ? Html.fromHtml(input, Html.FROM_HTML_MODE_LEGACY).toString()
+              : Html.fromHtml(input).toString();
+    }
 }

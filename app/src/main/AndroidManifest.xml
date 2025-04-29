@@ -33,6 +33,7 @@
         />
         <activity android:name=".view.course.CourseDetailActivity" />
         <activity android:name=".view.section.SectionDetailActivity" />
+        <activity android:name=".view.lesson.LessonContentActivity" />
     </application>
 
 </manifest>

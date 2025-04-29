@@ -18,6 +18,7 @@ import com.chaosdev.ngpad.model.main.Lesson;
 import com.chaosdev.ngpad.model.main.Section;
 
 import com.chaosdev.ngpad.utils.SvgLoader;
+import com.chaosdev.ngpad.view.lesson.LessonContentActivity;
 import com.chaosdev.ngpad.view.section.SectionDetailActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,11 +80,11 @@ public class LessonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     if (getItemViewType(position) == VIEW_TYPE_SECTION) {
       Section section = (Section) items.get(position);
       SectionViewHolder sectionHolder = (SectionViewHolder) holder;
-            
+
       String sectionTitle =
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-            ? Html.fromHtml(section.getTitle(), Html.FROM_HTML_MODE_LEGACY).toString()
-            : Html.fromHtml(section.getTitle()).toString();     
+          Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+              ? Html.fromHtml(section.getTitle(), Html.FROM_HTML_MODE_LEGACY).toString()
+              : Html.fromHtml(section.getTitle()).toString();
 
       sectionHolder.sectionTitleTextView.setText(sectionTitle);
       sectionHolder.sectionDescription.setText(
@@ -98,6 +99,7 @@ public class LessonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
           v -> {
             Intent intent = new Intent(context, SectionDetailActivity.class);
             intent.putExtra("section_id", section.getSlug());
+            intent.putExtra("section_no", position + 1);
             intent.putExtra("section_title", section.getTitle());
             intent.putExtra("section_slug", section.getSlug()); // Add section slug
             intent.putExtra("course_id", section.getCourseId());
@@ -106,16 +108,23 @@ public class LessonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     } else {
       Lesson lesson = (Lesson) items.get(position);
       LessonViewHolder lessonHolder = (LessonViewHolder) holder;
-   
-    String lessonTitle =
+
+      String lessonTitle =
           Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
               ? Html.fromHtml(lesson.getTitle(), Html.FROM_HTML_MODE_LEGACY).toString()
               : Html.fromHtml(lesson.getTitle()).toString();
-            
+
       lessonHolder.titleTextView.setText(lessonTitle);
-     
-      lessonHolder.lessonNoView.setText(String.format(position<11?"0%d":"%d",position+1));
-            
+
+      lessonHolder.lessonNoView.setText(
+          String.format(position < 11 ? "0%d." : "%d.", position + 1));
+
+      lessonHolder.itemView.setOnClickListener(
+          v -> {
+            Intent intent = new Intent(context, LessonContentActivity.class);
+            intent.putExtra("lesson_id", lesson.getId());
+            context.startActivity(intent);
+          });
     }
   }
 
@@ -128,14 +137,12 @@ public class LessonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     TextView sectionTitleTextView;
     ImageView sectionIcon;
     TextView sectionDescription;
-    
 
     SectionViewHolder(@NonNull View itemView) {
       super(itemView);
       sectionTitleTextView = itemView.findViewById(R.id.section_title);
       sectionDescription = itemView.findViewById(R.id.description);
       sectionIcon = itemView.findViewById(R.id.section_icon);
-      
     }
   }
 

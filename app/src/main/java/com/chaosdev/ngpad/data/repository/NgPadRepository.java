@@ -13,14 +13,12 @@ import com.chaosdev.ngpad.model.main.Course;
 import com.chaosdev.ngpad.model.main.Lesson;
 import com.chaosdev.ngpad.model.main.NgPad;
 import com.chaosdev.ngpad.model.main.Section;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -212,7 +210,6 @@ public class NgPadRepository {
           List<Section> sectionsFromDb =
               course.isNested() ? ngPadDao.getSectionsForCourse(course.getId()) : new ArrayList<>();
 
-           
           // If we have data in Room, use it
           if ((!lessonsFromDb.isEmpty() && !course.isNested())
               || (!sectionsFromDb.isEmpty() && course.isNested())) {
@@ -385,12 +382,11 @@ public class NgPadRepository {
     executorService.execute(
         () -> {
           List<Lesson> lessonsFromDb = ngPadDao.getLessonsBySectionId(sectionId);
-          
+
           if (!lessonsFromDb.isEmpty()) {
-              mainHandler.post(() -> callback.onLessonsFetched(lessonsFromDb));
-              return;
-            }
-          
+            mainHandler.post(() -> callback.onLessonsFetched(lessonsFromDb));
+            return;
+          }
 
           apiService
               .getLessonsBySection(sectionSlug)
@@ -459,6 +455,15 @@ public class NgPadRepository {
         });
   }
 
+  public void getLessonByID(int lessonsId, LessonCallback callback) {
+    executorService.execute(
+        () -> {
+          Lesson lesson = ngPadDao.getLessonsByLessonId(lessonsId);
+
+          mainHandler.post(() -> callback.onLessonFetched(lesson));
+        });
+  }
+
   public interface NgPadCallback {
     void onCategoriesFetched(NgPad ngPad);
 
@@ -477,5 +482,9 @@ public class NgPadRepository {
     void onLessonsFetched(List<Lesson> lessons);
 
     void onError(String message);
+  }
+
+  public interface LessonCallback {
+    void onLessonFetched(Lesson lesson);
   }
 }

@@ -29,6 +29,7 @@ public class SectionDetailActivity extends AppCompatActivity {
   private List<Lesson> lessons = new ArrayList<>();
   private ProgressBar progressBar;
   private String sectionId;
+  private int sectionNum;
   private int courseId;
   private String sectionSlug;
 
@@ -55,6 +56,7 @@ public class SectionDetailActivity extends AppCompatActivity {
 
     // Retrieve section ID, course ID, and title from Intent
     sectionId = getIntent().getStringExtra("section_id");
+    sectionNum = getIntent().getIntExtra("section_no",-1);
     courseId = getIntent().getIntExtra("course_id", -1);
     String sectionTitle = getIntent().getStringExtra("section_title");
     sectionSlug = getIntent().getStringExtra("section_slug"); // Add this to get the slug
@@ -63,7 +65,7 @@ public class SectionDetailActivity extends AppCompatActivity {
     TextView sectionNo = findViewById(R.id.section_id);
     ImageView svgImageView = findViewById(R.id.section_icon);
 
-    sectionNo.setText(String.valueOf(sectionId));
+    sectionNo.setText(String.format("Section %d",sectionNum));
 
     repository.getCourseById(
         courseId,

@@ -27,6 +27,11 @@ android {
     buildFeatures {
         viewBinding true
     }
+    
+    // Add this configuration block
+    configurations {
+       all*.exclude group: 'org.jetbrains', module: 'annotations-java5'
+    }
 }
 
 dependencies {
@@ -55,5 +60,26 @@ dependencies {
         exclude group: 'org.xerial', module: 'sqlite-jdbc'
     }
     annotationProcessor "org.xerial:sqlite-jdbc:3.40.1.0"
+    
+    final def markwon_version = '4.6.2'
+    
+    implementation "io.noties.markwon:core:$markwon_version"
+    implementation "io.noties.markwon:ext-strikethrough:$markwon_version"
+    implementation "io.noties.markwon:ext-tables:$markwon_version"
+    implementation "io.noties.markwon:ext-tasklist:$markwon_version"
+    implementation "io.noties.markwon:html:$markwon_version"
+    implementation "io.noties.markwon:image:$markwon_version"
+    implementation "io.noties.markwon:inline-parser:$markwon_version"
+    implementation "io.noties.markwon:linkify:$markwon_version"
+    implementation "io.noties.markwon:recycler:$markwon_version"
+    implementation "io.noties.markwon:recycler-table:$markwon_version"
+    implementation "io.noties.markwon:simple-ext:$markwon_version"
+    implementation "io.noties.markwon:syntax-highlight:$markwon_version"
+    annotationProcessor 'io.noties:prism4j-bundler:2.0.0'
+    implementation "io.noties:prism4j:2.0.0"
+    
+    def lottieVersion = "3.4.0" 
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+    
     
 }

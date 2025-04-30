@@ -1,17 +1,32 @@
 {
   "allFiles": [
     {
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/utils/StringUtils.java",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        },
+        "start": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        }
+      }
+    },
+    {
       "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/lesson/LessonContentActivity.java",
       "selection": {
         "end": {
-          "column": 85,
-          "index": 1493,
-          "line": 41
+          "column": 0,
+          "index": 0,
+          "line": 0
         },
         "start": {
-          "column": 85,
-          "index": 1493,
-          "line": 41
+          "column": 0,
+          "index": 0,
+          "line": 0
         }
       }
     },
@@ -20,8 +35,8 @@
       "selection": {
         "end": {
           "column": 0,
-          "index": 0,
-          "line": 0
+          "index": 20251,
+          "line": 490
         },
         "start": {
           "column": 0,
@@ -29,52 +44,7 @@
           "line": 0
         }
       }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/res/layout/activity_lesson_content.xml",
-      "selection": {
-        "end": {
-          "column": 17,
-          "index": 1769,
-          "line": 40
-        },
-        "start": {
-          "column": 17,
-          "index": 1769,
-          "line": 40
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/course/adapter/LessonAdapter.java",
-      "selection": {
-        "end": {
-          "column": 46,
-          "index": 3521,
-          "line": 97
-        },
-        "start": {
-          "column": 46,
-          "index": 3521,
-          "line": 97
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/utils/StringUtils.java",
-      "selection": {
-        "end": {
-          "column": 5,
-          "index": 925,
-          "line": 29
-        },
-        "start": {
-          "column": 5,
-          "index": 925,
-          "line": 29
-        }
-      }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/lesson/LessonContentActivity.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/repository/NgPadRepository.java"
 }

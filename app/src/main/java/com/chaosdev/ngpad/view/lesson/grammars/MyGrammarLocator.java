@@ -1,6 +1,7 @@
 package com.chaosdev.markdown;
 
 import androidx.annotation.NonNull;
+import com.chaosdev.ngpad.view.lesson.grammars.Prism_dart;
 import io.noties.prism4j.GrammarLocator;
 import io.noties.prism4j.Prism4j;
 
@@ -23,6 +24,8 @@ public class MyGrammarLocator implements GrammarLocator {
         return Prism_html.create(prism4j);
       case "css":
         return Prism_css.create(prism4j);
+      case "dart":
+        return Prism_dart.create(prism4j);
       default:
         return null;
     }
@@ -36,7 +39,7 @@ public class MyGrammarLocator implements GrammarLocator {
     languages.add("typescript");
     languages.add("html");
     languages.add("css");
-    languages.add("custom-lang");
+    languages.add("dart");
     return Collections.unmodifiableSet(languages);
   }
 }

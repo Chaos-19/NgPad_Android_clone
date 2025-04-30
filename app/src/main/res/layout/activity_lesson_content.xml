@@ -64,11 +64,10 @@
 
             <TextView
                  android:layout_height="wrap_content"
-                 android:layout_width="wrap_content"
+                 android:layout_width="match_parent"
                  android:padding="13dp"
-                 android:textSize="20sp"
+                 android:textSize="16sp"
                  android:text="Hello there"
-                 android:textStyle="bold"
                  android:id="@+id/lesson_content" />
 
         </LinearLayout>

@@ -56,11 +56,11 @@ public class LessonContentActivity extends AppCompatActivity {
     contentTectV.setText(String.valueOf(lessonContentId));
 
     final Prism4j prism4j = new Prism4j(new MyGrammarLocator());
-    final Prism4jTheme prism4jTheme = Prism4jThemeDefault.create();
+    final Prism4jTheme prism4jTheme = Prism4jThemeDarkula.create();
 
     Markwon markwon =
         Markwon.builder(this)
-            .usePlugin(io.noties.markwon.html.HtmlPlugin.create()) // for HTML
+            //.usePlugin(io.noties.markwon.html.HtmlPlugin.create()) // for HTML
             .usePlugin(SyntaxHighlightPlugin.create(prism4j, prism4jTheme))
             .usePlugin(TablePlugin.create(this))
             .usePlugin(TaskListPlugin.create(this))

@@ -1,42 +1,102 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/utils/StringUtils.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/datasource/remote/ApiService.java",
       "selection": {
         "end": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 25,
+          "index": 418,
+          "line": 15
         },
         "start": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 25,
+          "index": 418,
+          "line": 15
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/lesson/LessonContentActivity.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/lesson/grammars/Prism_dart.java",
       "selection": {
         "end": {
           "column": 0,
-          "index": 0,
-          "line": 0
+          "index": 4070,
+          "line": 116
         },
         "start": {
           "column": 0,
-          "index": 0,
-          "line": 0
+          "index": 4070,
+          "line": 116
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/repository/NgPadRepository.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/lesson/grammars/MyGrammarLocator.java",
+      "selection": {
+        "end": {
+          "column": 17,
+          "index": 753,
+          "line": 24
+        },
+        "start": {
+          "column": 17,
+          "index": 753,
+          "line": 24
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/lesson/grammars/Prism_javascript.java",
+      "selection": {
+        "end": {
+          "column": 35,
+          "index": 316,
+          "line": 8
+        },
+        "start": {
+          "column": 35,
+          "index": 316,
+          "line": 8
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/build.gradle",
+      "selection": {
+        "end": {
+          "column": 32,
+          "index": 879,
+          "line": 39
+        },
+        "start": {
+          "column": 32,
+          "index": 879,
+          "line": 39
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/settings.gradle",
+      "selection": {
+        "end": {
+          "column": 22,
+          "index": 271,
+          "line": 11
+        },
+        "start": {
+          "column": 22,
+          "index": 271,
+          "line": 11
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/res/values/themes.xml",
       "selection": {
         "end": {
           "column": 0,
-          "index": 20251,
-          "line": 490
+          "index": 0,
+          "line": 0
         },
         "start": {
           "column": 0,
@@ -46,5 +106,5 @@
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/repository/NgPadRepository.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/build.gradle"
 }

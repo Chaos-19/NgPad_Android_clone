@@ -13,7 +13,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
-  @GET("tutorials/Angular M/categories/")
+  @GET("tutorials/Flutter/categories/")
   Call<List<Category>> getCategories();
 
   @GET("categories/{slug}/courses/")

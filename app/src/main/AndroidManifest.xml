@@ -33,7 +33,8 @@
         />
         <activity android:name=".view.course.CourseDetailActivity" />
         <activity android:name=".view.section.SectionDetailActivity" />
-        <activity android:name=".view.lesson.LessonContentActivity" />
+        <activity android:name=".view.lesson.LessonContentActivity"  />
+        <activity android:name=".view.quiz.QuizeDetailActivity"  />
     </application>
 
 </manifest>

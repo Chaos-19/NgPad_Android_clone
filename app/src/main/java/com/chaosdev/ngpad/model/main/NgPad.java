@@ -6,6 +6,7 @@ import java.util.List;
 
 public class NgPad {
   private List<Category> categories;
+  private List<Quiz> quizzes;
 
   public NgPad() {
     this.categories = new ArrayList<>();

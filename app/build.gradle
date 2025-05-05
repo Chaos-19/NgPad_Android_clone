@@ -32,6 +32,7 @@ android {
     configurations {
        all*.exclude group: 'org.jetbrains', module: 'annotations-java5'
     }
+    
 }
 
 dependencies {
@@ -81,8 +82,5 @@ dependencies {
     def lottieVersion = "3.4.0" 
     implementation "com.airbnb.android:lottie:$lottieVersion"
     
-    
-    implementation 'com.synnapps:carouselview:0.1.4'
-    
-    
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

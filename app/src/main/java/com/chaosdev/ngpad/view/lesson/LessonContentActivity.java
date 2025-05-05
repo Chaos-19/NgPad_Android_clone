@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
+import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +12,8 @@ import com.chaosdev.markdown.MyGrammarLocator;
 import com.chaosdev.ngpad.R;
 import com.chaosdev.ngpad.data.repository.NgPadRepository;
 import com.chaosdev.ngpad.utils.StringUtils;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import io.noties.markwon.Markwon;
 import io.noties.markwon.ext.strikethrough.StrikethroughPlugin;
 import io.noties.markwon.ext.tables.TablePlugin;
@@ -35,15 +38,21 @@ public class LessonContentActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_lesson_content);
 
-    // Set up Toolbar
-    Toolbar toolbar = findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
+    FloatingActionButton fab = findViewById(R.id.backButton);
 
-    // Enable the back icon and set the title
-    if (getSupportActionBar() != null) {
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }
+    fab.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            // Use the FragmentManager to handle back navigation if you're in a Fragment
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+              getSupportFragmentManager().popBackStack();
+            } else {
+              // If not in a Fragment or no back stack entries, handle activity back
+              onBackPressed();
+            }
+          }
+        });
 
     TextView contentTectV = findViewById(R.id.lesson_content);
     TextView lessonTitleV = findViewById(R.id.lesson_title);

@@ -4,6 +4,8 @@ import com.chaosdev.ngpad.model.Category;
 import com.chaosdev.ngpad.model.main.Course;
 import com.chaosdev.ngpad.model.main.Lesson;
 
+import com.chaosdev.ngpad.model.main.Question;
+import com.chaosdev.ngpad.model.main.Quiz;
 import com.chaosdev.ngpad.model.main.Section;
 import java.util.List;
 
@@ -13,7 +15,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
-  @GET("tutorials/Flutter/categories/")
+  @GET("tutorials/Angular/categories/")
   Call<List<Category>> getCategories();
 
   @GET("categories/{slug}/courses/")
@@ -31,4 +33,10 @@ public interface ApiService {
   @GET("lessons/by_parent/")
   Call<List<Lesson>> getLessonsByParent(
       @Query("content_type") String contentType, @Query("object_id") String objectId);
+
+  @GET("quizzes/")
+  Call<List<Quiz>> getQuizzes();
+
+  @GET("quizzes/{slug}/questions")
+  Call<List<Question>> getQuestionsByQuizSlug(@Path("slug") String slug);
 }

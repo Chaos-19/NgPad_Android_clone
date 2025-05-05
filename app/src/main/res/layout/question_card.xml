@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+     android:layout_height="450dp"
+     android:layout_width="match_parent"
+     android:layout_margin="8dp"
+     card_view:cardElevation="2dp"
+     card_view:cardCornerRadius="10dp">
+
+    <LinearLayout
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         android:orientation="vertical"
+         android:paddingBottom="10dp">
+
+        <LinearLayout
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             android:gravity="center_vertical"
+             android:padding="16dp"
+             android:orientation="horizontal">
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:textSize="14dp"
+                 android:id="@+id/questionNo"
+                 android:text="01."
+                 android:textStyle="bold" />
+
+            <View
+                 android:layout_height="10dp"
+                 android:layout_width="19dp" />
+
+            <TextView
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:textSize="16dp"
+                 android:id="@+id/questionText"
+                 android:text="HTML Tutorial"
+                 android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ListView
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:id="@+id/optionList">
+
+        </ListView>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

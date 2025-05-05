@@ -11,16 +11,7 @@
          android:layout_width="match_parent"
          app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior"
          android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-         android:id="@+id/appbar">
-
-        <com.google.android.material.appbar.MaterialToolbar
-             android:layout_height="?attr/actionBarSize"
-             android:layout_width="match_parent"
-             android:background="@android:color/transparent"
-             app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-             android:id="@+id/toolbar" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+         android:id="@+id/appbar" />
 
     <androidx.core.widget.NestedScrollView
          android:layout_height="match_parent"
@@ -43,11 +34,13 @@
                      android:layout_height="wrap_content"
                      android:layout_width="match_parent"
                      android:orientation="horizontal"
-                     android:paddingTop="13dp">
+                     android:paddingTop="23dp">
 
                     <TextView
                          android:layout_height="wrap_content"
                          android:layout_width="wrap_content"
+                         android:layout_marginEnd="10dp"
+                         android:layout_centerVertical="true"
                          android:textSize="25sp"
                          android:text="Hello there"
                          android:textStyle="bold"
@@ -55,7 +48,10 @@
 
                     <ImageView
                          android:layout_height="wrap_content"
-                         android:layout_width="wrap_content"
+                         android:layout_width="48dp"
+                         android:src="@drawable/ic_bookmark"
+                         android:layout_centerVertical="true"
+                         app:tint="?attr/colorOnSurface"
                          android:layout_alignParentRight="true" />
 
                 </RelativeLayout>
@@ -73,5 +69,18 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+         android:layout_height="wrap_content"
+         android:layout_width="wrap_content"
+         android:elevation="0dp"
+         app:tint="?attr/colorOnSurface"
+         android:backgroundTint="@android:color/transparent"
+         android:layout_marginTop="16dp"
+         android:layout_marginStart="@dimen/fab_margin"
+         app:borderWidth="0dp"
+         app:srcCompat="?attr/homeAsUpIndicator"
+         android:layout_gravity="top|start"
+         android:id="@+id/backButton" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

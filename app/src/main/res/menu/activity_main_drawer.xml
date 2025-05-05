@@ -1,20 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+            android:id="@+id/test2"
+            android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_bookmark"
+            android:icon="@drawable/ic_menu_bookmark"
+            android:title="@string/menu_bookmarks" />
+
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_getpro"
+            android:icon="@drawable/ic_menu_bookmark"
+            android:title="@string/menu_getpro" />
+
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/ic_menu_rate"
+            android:title="@string/menu_rate" />
+
+        <item
+            android:id="@+id/nav_like"
+            android:icon="@drawable/ic_menu_like"
+            android:title="@string/menu_like" />
+
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/menu_share" />
+
+
     </group>
+
+
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Settings">
+        <menu>
+            <item
+                android:id="@+id/nav_font_size"
+                android:title="Change Font Size" />
+            <item
+                android:id="@+id/nav_theme"
+                android:title="Change Theme" />
+        </menu>
+    </item>
+
+
 </menu>

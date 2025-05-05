@@ -18,4 +18,13 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    
+    <string name="menu_like">Like Us (Get Latest Updates)</string>
+    <string name="menu_share">Share App</string>
+    <string name="menu_bookmarks">Bookmarks</string>
+    <string name="menu_rate">Rate App</string>
+    <string name="menu_getpro">Get Pro - Unlock Everything</string>
+    
+ 
+    
 </resources>

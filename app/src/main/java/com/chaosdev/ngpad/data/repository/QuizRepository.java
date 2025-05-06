@@ -99,52 +99,65 @@ public class QuizRepository {
     }
 
     public void fetchQuestionsByQuizSlug(String quizSlug, final QuestionCallback callback) {
-        executorService.execute(() -> {
-            // Check Room cache first
-            List<QuestionWithOptions> cachedQuestions = quizDao.getQuestionsWithOptions(quizSlug);
-            if (!cachedQuestions.isEmpty()) {
-                List<Question> questions = cachedQuestions.stream()
-                        .map(questionWithOptions -> {
-                            Question question = questionWithOptions.question;
-                            question.setOptions(questionWithOptions.options);
-                            return question;
+    executorService.execute(
+        () -> {
+          // Check Room cache first
+          List<QuestionWithOptions> cachedQuestions = quizDao.getQuestionsWithOptions(quizSlug);
+          if (!cachedQuestions.isEmpty()) {
+            List<Question> questions =
+                cachedQuestions.stream()
+                    .map(
+                        questionWithOptions -> {
+                          Question question = questionWithOptions.question;
+                          question.setOptions(questionWithOptions.options);
+                          return question;
                         })
-                        .collect(Collectors.toList());
-                mainHandler.post(() -> callback.onQuestionsFetched(questions));
-                return;
-            }
+                    .collect(Collectors.toList());
+            mainHandler.post(() -> callback.onQuestionsFetched(questions));
+            return;
+          }
 
-            // Fetch from API
-            apiService.getQuestionsByQuizSlug(quizSlug).enqueue(new Callback<List<Question>>() {
-                @Override
-                public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
-                    if (response.isSuccessful() && response.body() != null) {
+          // Fetch from API
+          apiService
+              .getQuestionsByQuizSlug(quizSlug)
+              .enqueue(
+                  new Callback<List<Question>>() {
+                    @Override
+                    public void onResponse(
+                        Call<List<Question>> call, Response<List<Question>> response) {
+                      if (response.isSuccessful() && response.body() != null) {
                         List<Question> questions = response.body();
-                        executorService.execute(() -> {
-                            quizDao.clearQuestions();
-                            quizDao.clearOptions();
-                            for (Question question : questions) {
+                        executorService.execute(
+                            () -> {
+                              /*
+                              quizDao.clearQuestions();
+                              quizDao.clearOptions();
+                              */
+                              for (Question question : questions) {
                                 question.setQuizSlug(quizSlug);
                                 quizDao.insertQuestions(Collections.singletonList(question));
                                 if (question.getOptions() != null) {
-                                    for (Option option : question.getOptions()) {
-                                        option.setQuestionId(question.getId());
-                                        quizDao.insertOptions(Collections.singletonList(option));
-                                    }
+                                  for (Option option : question.getOptions()) {
+                                    option.setQuestionId(question.getId());
+                                    quizDao.insertOptions(Collections.singletonList(option));
+                                  }
                                 }
-                            }
-                        });
+                              }
+                            });
                         mainHandler.post(() -> callback.onQuestionsFetched(questions));
-                    } else {
-                        mainHandler.post(() -> callback.onError("Failed to fetch questions: " + response.code()));
+                      } else {
+                        mainHandler.post(
+                            () ->
+                                callback.onError("Failed to fetch questions: " + response.code()));
+                      }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<List<Question>> call, Throwable t) {
-                    mainHandler.post(() -> callback.onError("Failed to fetch questions: " + t.getMessage()));
-                }
-            });
+                    @Override
+                    public void onFailure(Call<List<Question>> call, Throwable t) {
+                      mainHandler.post(
+                          () -> callback.onError("Failed to fetch questions: " + t.getMessage()));
+                    }
+                  });
         });
     }
 

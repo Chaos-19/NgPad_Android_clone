@@ -2,6 +2,8 @@ package com.chaosdev.ngpad.data.datasource.remote;
 
 import com.chaosdev.ngpad.model.Category;
 import com.chaosdev.ngpad.model.main.Course;
+import com.chaosdev.ngpad.model.main.Interview;
+import com.chaosdev.ngpad.model.main.InterviewQuestion;
 import com.chaosdev.ngpad.model.main.Lesson;
 
 import com.chaosdev.ngpad.model.main.Question;
@@ -39,4 +41,10 @@ public interface ApiService {
 
   @GET("quizzes/{slug}/questions")
   Call<List<Question>> getQuestionsByQuizSlug(@Path("slug") String slug);
+
+  @GET("interviews/")
+  Call<List<Interview>> getInterviews();
+
+  @GET("interviews/{slug}/questions")
+  Call<List<InterviewQuestion>> getInterviewQuestionsByQuizSlug(@Path("slug") String slug);
 }

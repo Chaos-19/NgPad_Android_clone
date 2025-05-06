@@ -14,12 +14,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.chaosdev.ngpad.R;
 import com.chaosdev.ngpad.databinding.FragmentMainBinding;
+import com.chaosdev.ngpad.databinding.FragmentTabNewsBinding;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class NewsFragment extends Fragment {
-    private FragmentMainBinding binding;
+    private FragmentTabNewsBinding binding;
 
     
     @Override
@@ -33,11 +34,10 @@ public class NewsFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        binding = FragmentMainBinding.inflate(inflater, container, false);
+        binding = FragmentTabNewsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.sectionLabel;
-        textView.setText("News Fragment");
+        
         return root;
     }
 

@@ -35,6 +35,7 @@
         <activity android:name=".view.section.SectionDetailActivity" />
         <activity android:name=".view.lesson.LessonContentActivity"  />
         <activity android:name=".view.quiz.QuizeDetailActivity"  />
+        <activity android:name=".view.interview.InterviewDetailActivity"  />
     </application>
 
 </manifest>

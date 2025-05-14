@@ -92,10 +92,10 @@ public class QuizFragment extends Fragment {
     quizGrid.setOnItemClickListener(
         (parent, view, position, id) -> {
           Quiz selectedQuiz = adapter.getItem(position);
-          // viewModel.fetchQuestionsByQuizSlug(selectedQuiz.getSlug());
-          // Navigate to CourseDetailActivity
+          
           Intent intent = new Intent(context, QuizeDetailActivity.class);
-          intent.putExtra("quiz_slug",selectedQuiz.getSlug());
+          intent.putExtra("quiz_slug", selectedQuiz.getSlug());
+          intent.putExtra("quiz_title", selectedQuiz.getTitle());
           context.startActivity(intent);
         });
 
@@ -111,82 +111,3 @@ public class QuizFragment extends Fragment {
     binding = null;
   }
 }
-
-/*
-public class QuizFragment extends Fragment {
-    private FragmentTabQuizBinding binding;
-    private QuizViewModel viewModel;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        QuizViewModelFactory factory = new QuizViewModelFactory(requireContext());
-        viewModel = new ViewModelProvider(this, factory).get(QuizViewModel.class);
-    }
-
-    @Override
-    public View onCreateView(
-            @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentTabQuizBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        Context context = getContext();
-        GridView quizGrid = binding.gridView;
-    // ProgressBar progressBar = binding.progressBar;
-    // TextView errorText = binding.errorText;
-
-    /* Setup GridView
-    QuizeAdapter adapter = new QuizeAdapter(context, new ArrayList<>());
-    quizGrid.setAdapter(adapter);
-    *
-
-    // Observe ViewModel
-    viewModel
-        .getQuizzes()
-        .observe(
-            getViewLifecycleOwner(),
-            quizzes -> {
-              if (quizzes != null && !quizzes.isEmpty()) {
-                QuizeAdapter adapter = new QuizeAdapter(context, (ArrayList) quizzes);
-                quizGrid.setAdapter(adapter);
-                quizGrid.setVisibility(View.VISIBLE);
-                /*
-                    progressBar.setVisibility(View.GONE);
-                errorText.setVisibility(View.GONE);
-                    *
-              } else {
-                quizGrid.setVisibility(View.GONE);
-                /*progressBar.setVisibility(View.GONE);
-                errorText.setVisibility(View.VISIBLE);
-                errorText.setText("No quizzes available");*
-              }
-            });
-
-        viewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> {
-            //progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
-            quizGrid.setVisibility(isLoading ? View.GONE : View.VISIBLE);
-            //errorText.setVisibility(View.GONE);
-        });
-
-        viewModel.getError().observe(getViewLifecycleOwner(), error -> {
-            if (error != null) {
-                //errorText.setText(error);
-                //errorText.setVisibility(View.VISIBLE);
-                quizGrid.setVisibility(View.GONE);
-                //progressBar.setVisibility(View.GONE);
-            }
-        });
-
-        // Trigger quiz fetching
-        viewModel.fetchQuizzes();
-
-        return root;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-}
-*/

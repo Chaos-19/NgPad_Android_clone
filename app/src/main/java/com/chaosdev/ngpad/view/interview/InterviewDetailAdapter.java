@@ -1,6 +1,7 @@
 package com.chaosdev.ngpad.view.interview;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.Html;
 import android.text.Spanned;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import com.chaosdev.markdown.MyGrammarLocator;
 import com.chaosdev.ngpad.R;
 import com.chaosdev.ngpad.model.main.InterviewQuestion;
@@ -18,6 +21,7 @@ import io.noties.markwon.Markwon;
 import io.noties.markwon.ext.strikethrough.StrikethroughPlugin;
 import io.noties.markwon.ext.tables.TablePlugin;
 import io.noties.markwon.ext.tasklist.TaskListPlugin;
+import io.noties.markwon.image.AsyncDrawable;
 import io.noties.markwon.image.ImagesPlugin;
 import io.noties.markwon.inlineparser.MarkwonInlineParserPlugin;
 import io.noties.markwon.linkify.LinkifyPlugin;
@@ -92,6 +96,7 @@ public class InterviewDetailAdapter extends BaseExpandableListAdapter {
     }
 
     holder.title.setText(StringUtils.escapSpacialCharacter(interviewQ.getInterviewQuestion()));
+    holder.interviwNo.setText(String.valueOf(groupPosition));
     holder.indicator.setRotation(isExpanded ? 180 : 0);
         
     return convertView;
@@ -122,7 +127,21 @@ public class InterviewDetailAdapter extends BaseExpandableListAdapter {
             .usePlugin(StrikethroughPlugin.create())
             .usePlugin(LinkifyPlugin.create())
             .usePlugin(SimpleExtPlugin.create())
-            .usePlugin(ImagesPlugin.create())
+            .usePlugin(
+                ImagesPlugin.create(
+                    new ImagesPlugin.ImagesConfigure() {
+                      @Override
+                      public void configureImages(@NonNull ImagesPlugin plugin) {
+                        plugin.placeholderProvider(
+                            new ImagesPlugin.PlaceholderProvider() {
+                              @Override
+                              public Drawable providePlaceholder(@NonNull AsyncDrawable drawable) {
+                                return ContextCompat.getDrawable(
+                                    context, R.drawable.placeholder);
+                              }
+                            });
+                      }
+                    }))
             .usePlugin(MarkwonInlineParserPlugin.create())
             .build();
 

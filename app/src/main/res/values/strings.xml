@@ -25,6 +25,11 @@
     <string name="menu_rate">Rate App</string>
     <string name="menu_getpro">Get Pro - Unlock Everything</string>
     
+    <!-- Performance analysis strings for quiz results -->
+    <string name="performance_poor">Your %1$d%% score in %2$s shows you’re just starting out. Don’t worry! Focus on revising key concepts and practice regularly to build your skills.</string>
+    <string name="performance_average">With a %1$d%% score in %2$s, you’re making progress! Keep studying and tackle more practice questions to boost your understanding.</string>
+    <string name="performance_good">Great job scoring %1$d%% in %2$s! You’re doing well, but there’s room to grow. Put in some extra effort on challenging topics to aim higher.</string>
+    <string name="performance_excellent">Wow, %1$d%% in %2$s is outstanding! You’ve mastered this topic. Keep practicing to maintain your excellence and explore advanced concepts!</string>
  
     
 </resources>

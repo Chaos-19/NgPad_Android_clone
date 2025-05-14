@@ -9,64 +9,36 @@
     <com.google.android.material.appbar.AppBarLayout
          android:layout_height="wrap_content"
          android:layout_width="match_parent"
+         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$Behavior"
          android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
          android:id="@+id/appbar">
 
         <com.google.android.material.appbar.MaterialToolbar
              android:layout_height="?attr/actionBarSize"
              android:layout_width="match_parent"
-             android:background="?attr/colorPrimaryVariant"
-             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+             android:background="@color/colorPrimary"
+             app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
              android:id="@+id/toolbar" />
-
-        <LinearLayout
-             android:layout_height="wrap_content"
-             android:layout_width="match_parent"
-             android:elevation="8dp"
-             android:padding="15dp"
-             android:orientation="horizontal"
-             android:id="@+id/topStickyLayout">
-
-            <TextView
-                 android:layout_height="wrap_content"
-                 android:layout_width="wrap_content"
-                 android:textSize="25sp"
-                 android:id="@+id/totalQuestion"
-                 android:text="Total Quiz: 15" />
-
-        </LinearLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
          android:layout_height="match_parent"
          android:layout_width="match_parent"
-         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+         android:id="@+id/nested_scroll_view">
 
         <LinearLayout
              android:layout_height="wrap_content"
              android:layout_width="match_parent"
-             android:orientation="vertical">
+             android:orientation="vertical"
+             android:paddingTop="15dp">
 
             <androidx.recyclerview.widget.RecyclerView
                  android:layout_height="wrap_content"
                  android:layout_width="match_parent"
                  android:paddingHorizontal="8dp"
-                 android:id="@+id/quizList" />
-
-            <LinearLayout
-                 android:layout_height="wrap_content"
-                 android:layout_width="match_parent"
-                 android:padding="20dp">
-
-                <Button
-                     android:layout_height="wrap_content"
-                     android:layout_width="wrap_content"
-                     android:id="@+id/submit"
-                     android:text="Submit"
-                     android:textStyle="bold" />
-
-            </LinearLayout>
+                 android:id="@+id/recycler_view_bookmarks" />
 
         </LinearLayout>
 

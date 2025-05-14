@@ -8,6 +8,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.chaosdev.ngpad.model.Category;
+import com.chaosdev.ngpad.model.main.BookMark;
 import com.chaosdev.ngpad.model.main.Course;
 import com.chaosdev.ngpad.model.main.Interview;
 import com.chaosdev.ngpad.model.main.InterviewQuestion;
@@ -19,14 +20,15 @@ import com.chaosdev.ngpad.model.main.Quiz;
 import com.chaosdev.ngpad.model.main.Section;
 
 @Database(
-    entities = {Category.class, Course.class, Lesson.class, Section.class,SvgCacheEntry.class,Quiz.class, Question.class, Option.class,Interview.class,InterviewQuestion.class},
-    version = 8, // Incremented from 1 to 2
+    entities = {Category.class, Course.class, Lesson.class, Section.class,SvgCacheEntry.class,Quiz.class, Question.class, Option.class,Interview.class,InterviewQuestion.class,BookMark.class},
+    version = 9,
     exportSchema = true
 )
 public abstract class AppDatabase extends RoomDatabase {
     public abstract NgPadDao ngPadDao();
     public abstract QuizDao quizDao();
     public abstract InterviewDao interviewDao();
+    public abstract BookMarkDao bookMarkDao();
     
     private static volatile AppDatabase INSTANCE;
 

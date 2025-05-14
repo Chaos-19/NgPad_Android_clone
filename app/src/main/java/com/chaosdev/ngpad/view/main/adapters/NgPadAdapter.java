@@ -171,10 +171,7 @@ public class NgPadAdapter extends BaseExpandableListAdapter {
     TextView courseDescription = convertView.findViewById(R.id.description);
     courseDescription.setText(course.getDescription());
 
-    String courseTitle =
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-            ? Html.fromHtml(course.getTitle(), Html.FROM_HTML_MODE_LEGACY).toString()
-            : Html.fromHtml(course.getTitle()).toString();
+    String courseTitle = StringUtils.escapSpacialCharacter(course.getTitle());
 
     courseTitleV.setText(courseTitle);
 

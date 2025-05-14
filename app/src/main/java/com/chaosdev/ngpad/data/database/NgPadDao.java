@@ -36,6 +36,9 @@ public interface NgPadDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertSections(List<Section> sections);
+    
+    @Query("SELECT * FROM sections WHERE slug = :sectionId")
+    Section getSectionByLessonId(String sectionId);
 
     // Lesson methods
     @Query("SELECT * FROM lessons WHERE courseId = :courseId AND sectionId IS NULL")

@@ -36,6 +36,18 @@
         <activity android:name=".view.lesson.LessonContentActivity"  />
         <activity android:name=".view.quiz.QuizeDetailActivity"  />
         <activity android:name=".view.interview.InterviewDetailActivity"  />
+        <activity android:name=".view.quiz.result.QuizResultActivity"  />
+        <activity android:name=".view.bookmark.BookMarkActivity"  />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.chaosdev.ngpad.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        
     </application>
 
 </manifest>

@@ -45,10 +45,10 @@
              android:layout_width="match_parent"
              android:gravity="center"
              android:horizontalSpacing="10dp"
+             android:padding="8dp"
              android:stretchMode="columnWidth"
              android:numColumns="3"
              android:verticalSpacing="10dp"
-             android:paddingHorizontal="8dp"
              android:columnWidth="130dp"
              android:id="@+id/gridView">
 

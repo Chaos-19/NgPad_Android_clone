@@ -1,5 +1,6 @@
 package com.chaosdev.ngpad;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.chaosdev.ngpad.databinding.ActivityMainBinding;
 import com.chaosdev.ngpad.ui.main.SectionsPagerAdapter;
 import com.chaosdev.ngpad.utils.SvgLoader;
+import com.chaosdev.ngpad.view.bookmark.BookMarkActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -116,11 +118,13 @@ public class MainActivity extends AppCompatActivity {
     navView.setNavigationItemSelectedListener(
         item -> {
           int id = item.getItemId();
-          if (id == R.id.nav_like) {
-            // Handle Like Us
-          } else if (id == R.id.nav_share) {
-            // Handle Share App
+          switch (id) {
+            case R.id.nav_bookmark:
+              Intent intent = new Intent(this, BookMarkActivity.class);
+              this.startActivity(intent);
+              break;
           }
+
           drawerLayout.closeDrawer(GravityCompat.START);
           return true;
         });

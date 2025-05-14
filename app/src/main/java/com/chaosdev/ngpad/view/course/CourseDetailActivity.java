@@ -17,6 +17,7 @@ import com.chaosdev.ngpad.model.Category;
 import com.chaosdev.ngpad.model.main.Course;
 import com.chaosdev.ngpad.model.main.Lesson;
 import com.chaosdev.ngpad.model.main.NgPad;
+import com.chaosdev.ngpad.utils.StringUtils;
 import com.chaosdev.ngpad.utils.SvgLoader;
 import com.chaosdev.ngpad.view.course.adapter.LessonAdapter;
 import java.util.ArrayList;
@@ -35,28 +36,28 @@ public class CourseDetailActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_course_detail);
 
-    // Set up Toolbar
+    
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    // Set up ProgressBar
+    
     progressBar = findViewById(R.id.progressBar);
 
-    // Set up RecyclerView
+    
     recyclerView = findViewById(R.id.lessonsRecyclerView);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
     adapter = new LessonAdapter(this, lessons);
     recyclerView.setAdapter(adapter);
 
-    // Initialize repository
+    
     repository = NgPadRepository.getInstance(this);
 
-    // Retrieve the course ID from the Intent
+    
     int courseId = getIntent().getIntExtra("course_id", -1);
     TextView courseIdTextView = findViewById(R.id.courseIdTextView);
     ImageView svgImageView = findViewById(R.id.course_icon);
 
-    // Retrieve the Course from the repository
+    
     progressBar.setVisibility(View.VISIBLE);
     repository.getCourseById(
         courseId,
@@ -64,17 +65,17 @@ public class CourseDetailActivity extends AppCompatActivity {
           if (course != null) {
             courseIdTextView.setText(course.getDescription());
             String imageUrl = course.getIcon();
-            svgImageView.setTag(imageUrl); // Set the tag before loading
+            svgImageView.setTag(imageUrl); 
             SvgLoader.loadSvgFromUrl(this, svgImageView, imageUrl, R.drawable.advwebdev);
 
-            // Enable the back icon and set the title
+            
             if (getSupportActionBar() != null) {
               getSupportActionBar().setDisplayHomeAsUpEnabled(true);
               getSupportActionBar().setDisplayShowHomeEnabled(true);
-              getSupportActionBar().setTitle(course.getTitle());
+              getSupportActionBar().setTitle(StringUtils.escapSpacialCharacter(course.getTitle()));
             }
 
-            // Fetch lessons or sections based on isNested
+            
             fetchCourseContent(course);
           } else {
             progressBar.setVisibility(View.GONE);
@@ -110,7 +111,7 @@ public class CourseDetailActivity extends AppCompatActivity {
             lessons.clear();
             lessons.addAll(updatedCourse.getLessons());
             adapter.updateLessons(
-                updatedCourse); // Adapter will only show sections for nested course
+                updatedCourse); 
             Log.d(
                 TAG,
                 "Sections fetched for nested course "
@@ -154,7 +155,7 @@ public class CourseDetailActivity extends AppCompatActivity {
             progressBar.setVisibility(View.GONE);
             lessons.clear();
             lessons.addAll(updatedCourse.getLessons());
-            adapter.updateLessons(updatedCourse); // Adapter will show lessons for non-nested course
+            adapter.updateLessons(updatedCourse); 
             Log.d(
                 TAG,
                 "Lessons fetched for non-nested course " + course.getId() + ": " + lessons.size());

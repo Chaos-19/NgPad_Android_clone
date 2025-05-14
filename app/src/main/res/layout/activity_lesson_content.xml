@@ -27,34 +27,30 @@
             <LinearLayout
                  android:layout_height="wrap_content"
                  android:layout_width="match_parent"
-                 android:padding="25dp"
-                 android:orientation="vertical">
+                 android:gravity="center_vertical"
+                 android:padding="55dp"
+                 android:orientation="horizontal">
 
-                <RelativeLayout
+                <TextView
                      android:layout_height="wrap_content"
-                     android:layout_width="match_parent"
-                     android:orientation="horizontal"
-                     android:paddingTop="23dp">
+                     android:layout_width="wrap_content"
+                     android:textSize="25sp"
+                     android:layout_weight="1"
+                     android:text="Hello there"
+                     android:textStyle="bold"
+                     android:id="@+id/lesson_title" />
 
-                    <TextView
-                         android:layout_height="wrap_content"
-                         android:layout_width="wrap_content"
-                         android:layout_marginEnd="10dp"
-                         android:layout_centerVertical="true"
-                         android:textSize="25sp"
-                         android:text="Hello there"
-                         android:textStyle="bold"
-                         android:id="@+id/lesson_title" />
+                <View
+                     android:layout_height="20dp"
+                     android:layout_width="20dp" />
 
-                    <ImageView
-                         android:layout_height="wrap_content"
-                         android:layout_width="48dp"
-                         android:src="@drawable/ic_bookmark"
-                         android:layout_centerVertical="true"
-                         app:tint="?attr/colorOnSurface"
-                         android:layout_alignParentRight="true" />
-
-                </RelativeLayout>
+                <ImageView
+                     android:layout_height="wrap_content"
+                     android:layout_width="48dp"
+                     android:src="@drawable/ic_bookmark"
+                     android:clickable="true"
+                     app:tint="?attr/colorOnSurface"
+                     android:id="@+id/bookmarkBtn" />
 
             </LinearLayout>
 

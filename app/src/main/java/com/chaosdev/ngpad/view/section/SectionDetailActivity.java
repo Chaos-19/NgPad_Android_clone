@@ -38,34 +38,28 @@ public class SectionDetailActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_section_detail);
 
-    // Set up Toolbar
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    // Set up ProgressBar
     progressBar = findViewById(R.id.progressBar);
 
-    // Set up RecyclerView
     recyclerView = findViewById(R.id.lessonsRecyclerView);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
     adapter = new LessonAdapter(this, lessons);
     recyclerView.setAdapter(adapter);
 
-    // Initialize repository
     repository = NgPadRepository.getInstance(this);
 
-    // Retrieve section ID, course ID, and title from Intent
     sectionId = getIntent().getStringExtra("section_id");
-    sectionNum = getIntent().getIntExtra("section_no",-1);
+    sectionNum = getIntent().getIntExtra("section_no", -1);
     courseId = getIntent().getIntExtra("course_id", -1);
     String sectionTitle = getIntent().getStringExtra("section_title");
-    sectionSlug = getIntent().getStringExtra("section_slug"); // Add this to get the slug
-
+    sectionSlug = getIntent().getStringExtra("section_slug");
     TextView sectionTitleTextView = findViewById(R.id.sectionTitleTextView);
     TextView sectionNo = findViewById(R.id.section_id);
     ImageView svgImageView = findViewById(R.id.section_icon);
 
-    sectionNo.setText(String.format("Section %d",sectionNum));
+    sectionNo.setText(String.format("Section %d", sectionNum));
 
     repository.getCourseById(
         courseId,
@@ -73,7 +67,7 @@ public class SectionDetailActivity extends AppCompatActivity {
           if (course != null) {
 
             String imageUrl = course.getIcon();
-            svgImageView.setTag(imageUrl); // Set the tag before loading
+            svgImageView.setTag(imageUrl);
             SvgLoader.loadSvgFromUrl(this, svgImageView, imageUrl, R.drawable.advwebdev);
 
           } else {
@@ -87,14 +81,12 @@ public class SectionDetailActivity extends AppCompatActivity {
 
     sectionTitleTextView.setText(sectionTitle);
 
-    // Enable the back icon and set the title
     if (getSupportActionBar() != null) {
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       getSupportActionBar().setDisplayShowHomeEnabled(true);
       getSupportActionBar().setTitle(sectionTitle);
     }
 
-    // Fetch lessons for this section
     fetchLessonsForSection();
   }
 
@@ -110,10 +102,10 @@ public class SectionDetailActivity extends AppCompatActivity {
             progressBar.setVisibility(View.GONE);
             lessons.clear();
             lessons.addAll(fetchedLessons);
-            // Create a dummy course for the adapter (non-nested, only lessons)
+
             Course dummyCourse = new Course();
             dummyCourse.setId(courseId);
-            dummyCourse.setIsNested(false); // Force non-nested to show only lessons
+            dummyCourse.setIsNested(false);
             dummyCourse.getLessons().addAll(lessons);
             adapter.updateLessons(dummyCourse);
             Log.d(TAG, "Lessons fetched for section " + sectionId + ": " + lessons.size());

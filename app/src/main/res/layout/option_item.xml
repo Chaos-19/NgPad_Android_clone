@@ -8,23 +8,30 @@
      card_view:cardCornerRadius="10dp">
 
     <RelativeLayout
-         android:layout_height="match_parent"
+         android:layout_height="wrap_content"
          android:layout_width="match_parent"
-         android:gravity="center_vertical"
          android:padding="16dp">
 
-        <LinearLayout
+        <CheckBox
              android:layout_height="wrap_content"
              android:layout_width="wrap_content"
              android:layout_centerVertical="true"
+             android:layout_alignParentEnd="true"
+             android:id="@+id/optionCheck" />
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="0dp"
+             android:layout_toStartOf="@id/optionCheck"
+             android:layout_centerVertical="true"
              android:orientation="horizontal"
-             android:layout_alignParentLeft="true">
+             android:layout_alignParentStart="true">
 
             <TextView
                  android:layout_height="wrap_content"
                  android:layout_width="wrap_content"
                  android:padding="5dp"
-                 android:textSize="15dp"
+                 android:textSize="20sp"
                  android:id="@+id/optionKey"
                  android:text="A"
                  android:textStyle="bold" />
@@ -35,21 +42,15 @@
 
             <TextView
                  android:layout_height="wrap_content"
-                 android:layout_width="wrap_content"
-                 android:textSize="17dp"
+                 android:layout_width="0dp"
+                 android:textSize="17sp"
+                 android:paddingBottom="5dp"
+                 android:layout_weight="1"
                  android:id="@+id/optionText"
-                 android:text="HTML Tutorial"
+                 android:text="HTML Tutorial with a very long description that might overlap"
                  android:textStyle="bold" />
 
         </LinearLayout>
-
-        <CheckBox
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:gravity="end|right"
-             android:layout_centerVertical="true"
-             android:layout_alignParentRight="true"
-             android:id="@+id/optionCheck" />
 
     </RelativeLayout>
 

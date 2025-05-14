@@ -1,9 +1,12 @@
 package com.chaosdev.ngpad.view.quiz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,18 +14,26 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.chaosdev.ngpad.databinding.ActivityQuizeDetailBinding;
+import com.chaosdev.ngpad.model.main.UserQuizAnswer;
 import com.chaosdev.ngpad.view.main.QuizViewModelFactory;
 import com.chaosdev.ngpad.view.main.adapters.QuizeAdapter;
+import com.chaosdev.ngpad.view.quiz.result.QuizResultActivity;
 import com.chaosdev.ngpad.viewmodel.main.QuizViewModel;
+import java.util.Map;
 
 public class QuizeDetailActivity extends AppCompatActivity {
   private ActivityQuizeDetailBinding binding;
 
   private String quizeSlug;
+  private String quizeTitle;
   private QuizViewModel viewModel;
-  private QuizeAdapter adapter;
+  private QuizeDetailAdapter adapter;
 
   private RecyclerView recycleView;
+  
+  private  int totalQuestion;
+  private int remainingQuestion;    
+    
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +45,9 @@ public class QuizeDetailActivity extends AppCompatActivity {
     Toolbar toolbar = binding.toolbar;
     setSupportActionBar(toolbar);
 
-    if (getSupportActionBar() != null) {
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      getSupportActionBar().setDisplayShowHomeEnabled(true);
-      getSupportActionBar().setTitle("");
-    }
+    TextView totalQuestionTv = binding.totalQuestion;
+    Button submitBtn = binding.submit;
+
     recycleView = binding.quizList;
     LinearLayoutManager layoutManager = new LinearLayoutManager(this);
     recycleView.setLayoutManager(layoutManager);
@@ -47,7 +56,23 @@ public class QuizeDetailActivity extends AppCompatActivity {
     viewModel = new ViewModelProvider(this, factory).get(QuizViewModel.class);
 
     quizeSlug = getIntent().getStringExtra("quiz_slug");
+    quizeTitle = getIntent().getStringExtra("quiz_title");
 
+    submitBtn.setOnClickListener(
+        (v) -> {
+          viewModel.setOutputDetailVisibility(true);
+
+          Intent intent = new Intent(this, QuizResultActivity.class);
+          intent.putExtra("quizResult", viewModel.getResultOfQuize());
+          intent.putExtra("quizTopic", quizeTitle);
+          this.startActivity(intent);
+        });
+
+    if (getSupportActionBar() != null) {
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setDisplayShowHomeEnabled(true);
+      getSupportActionBar().setTitle(quizeTitle);
+    }
 
     viewModel
         .getIsLoading()
@@ -63,8 +88,9 @@ public class QuizeDetailActivity extends AppCompatActivity {
             this,
             questions -> {
               if (questions != null && !questions.isEmpty()) {
-                QuizeDetailAdapter adapter = new QuizeDetailAdapter(this, questions);
+                 adapter = new QuizeDetailAdapter(this, questions, viewModel);
                 recycleView.setAdapter(adapter);
+                totalQuestion = questions.size();     
               }
             });
 
@@ -79,7 +105,23 @@ public class QuizeDetailActivity extends AppCompatActivity {
               }
             });
 
+    viewModel
+        .getUserAnswers()
+        .observe(
+            this,
+            answer -> {
+              totalQuestionTv.setText(String.format("Remaining Question : %d",totalQuestion - answer.size()));
+            });
+
     viewModel.fetchQuestionsByQuizSlug(quizeSlug);
+
+    viewModel
+        .getOutputDetailVisibility()
+        .observe(
+            this,
+            visibility -> {
+              if (adapter != null) adapter.setOutputDetailVisibility(visibility);
+            });
   }
 
   @Override

@@ -17,6 +17,7 @@ import com.chaosdev.ngpad.model.main.Course;
 import com.chaosdev.ngpad.model.main.Lesson;
 import com.chaosdev.ngpad.model.main.Section;
 
+import com.chaosdev.ngpad.utils.StringUtils;
 import com.chaosdev.ngpad.utils.SvgLoader;
 import com.chaosdev.ngpad.view.lesson.LessonContentActivity;
 import com.chaosdev.ngpad.view.section.SectionDetailActivity;
@@ -28,13 +29,13 @@ public class LessonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   private static final int VIEW_TYPE_LESSON = 1;
 
   private final Context context;
-  private List<Object> items = new ArrayList<>(); // Holds either Section or Lesson objects
+  private List<Object> items = new ArrayList<>(); 
   private boolean isNested;
 
   public LessonAdapter(Context context, List<Lesson> lessons) {
     this.context = context;
     this.items = new ArrayList<>(lessons);
-    this.isNested = false; // Default to false
+    this.isNested = false; 
   }
 
   public void updateLessons(Course course) {
@@ -42,15 +43,10 @@ public class LessonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     this.isNested = course.isNested();
 
     if (course.isNested()) {
-      // For nested courses, only add sections
-      Toast.makeText(
-              context,
-              String.valueOf(course.isNested()) + "" + course.getSections().size(),
-              Toast.LENGTH_LONG)
-          .show();
+      
       items.addAll(course.getSections());
     } else {
-      // For non-nested courses, add lessons directly
+      
       items.addAll(course.getLessons());
     }
     notifyDataSetChanged();
@@ -81,27 +77,22 @@ public class LessonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
       Section section = (Section) items.get(position);
       SectionViewHolder sectionHolder = (SectionViewHolder) holder;
 
-      String sectionTitle =
-          Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-              ? Html.fromHtml(section.getTitle(), Html.FROM_HTML_MODE_LEGACY).toString()
-              : Html.fromHtml(section.getTitle()).toString();
+      String sectionTitle = StringUtils.escapSpacialCharacter(section.getTitle());
 
       sectionHolder.sectionTitleTextView.setText(sectionTitle);
       sectionHolder.sectionDescription.setText(
           section.getDescription() != null ? section.getDescription() : "No description");
 
-      // Load SVG icon
       SvgLoader.loadSvgFromUrl(
           context, sectionHolder.sectionIcon, section.getIcon(), R.drawable.advwebdev);
 
-      // Set click listener to navigate to SectionDetailActivity
       sectionHolder.itemView.setOnClickListener(
           v -> {
             Intent intent = new Intent(context, SectionDetailActivity.class);
             intent.putExtra("section_id", section.getSlug());
             intent.putExtra("section_no", position + 1);
             intent.putExtra("section_title", section.getTitle());
-            intent.putExtra("section_slug", section.getSlug()); // Add section slug
+            intent.putExtra("section_slug", section.getSlug());
             intent.putExtra("course_id", section.getCourseId());
             context.startActivity(intent);
           });
@@ -109,10 +100,7 @@ public class LessonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
       Lesson lesson = (Lesson) items.get(position);
       LessonViewHolder lessonHolder = (LessonViewHolder) holder;
 
-      String lessonTitle =
-          Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
-              ? Html.fromHtml(lesson.getTitle(), Html.FROM_HTML_MODE_LEGACY).toString()
-              : Html.fromHtml(lesson.getTitle()).toString();
+      String lessonTitle = StringUtils.escapSpacialCharacter(lesson.getTitle());
 
       lessonHolder.titleTextView.setText(lessonTitle);
 

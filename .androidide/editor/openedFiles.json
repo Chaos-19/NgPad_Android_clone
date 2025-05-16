@@ -29,7 +29,22 @@
           "line": 8
         }
       }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/README.md",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 2919,
+          "line": 92
+        },
+        "start": {
+          "column": 0,
+          "index": 2919,
+          "line": 92
+        }
+      }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/datasource/remote/RetrofitClient.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/README.md"
 }

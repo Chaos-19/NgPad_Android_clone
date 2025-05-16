@@ -1,39 +1,9 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/lesson/LessonContentActivity.java",
-      "selection": {
-        "end": {
-          "column": 0,
-          "index": 0,
-          "line": 0
-        },
-        "start": {
-          "column": 0,
-          "index": 0,
-          "line": 0
-        }
-      }
-    },
-    {
       "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/datasource/remote/ApiService.java",
       "selection": {
         "end": {
-          "column": 19,
-          "index": 606,
-          "line": 19
-        },
-        "start": {
-          "column": 19,
-          "index": 606,
-          "line": 19
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/bookmark/BookMarkActivity.java",
-      "selection": {
-        "end": {
           "column": 0,
           "index": 0,
           "line": 0
@@ -46,110 +16,20 @@
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/res/layout/activity_lesson_content.xml",
+      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/datasource/remote/RetrofitClient.java",
       "selection": {
         "end": {
-          "column": 52,
-          "index": 2205,
-          "line": 51
+          "column": 35,
+          "index": 323,
+          "line": 8
         },
         "start": {
-          "column": 52,
-          "index": 2205,
-          "line": 51
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/res/values/colors.xml",
-      "selection": {
-        "end": {
-          "column": 44,
-          "index": 1294,
-          "line": 27
-        },
-        "start": {
-          "column": 38,
-          "index": 1288,
-          "line": 27
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/view/bookmark/BookMarkAdapter.java",
-      "selection": {
-        "end": {
-          "column": 37,
-          "index": 1745,
-          "line": 49
-        },
-        "start": {
-          "column": 27,
-          "index": 1735,
-          "line": 49
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/res/drawable/ic_bookmarked.xml",
-      "selection": {
-        "end": {
-          "column": 25,
-          "index": 117,
-          "line": 2
-        },
-        "start": {
-          "column": 25,
-          "index": 117,
-          "line": 2
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/res/drawable/ic_bookmark.xml",
-      "selection": {
-        "end": {
-          "column": 9,
-          "index": 234,
-          "line": 6
-        },
-        "start": {
-          "column": 9,
-          "index": 234,
-          "line": 6
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/res/drawable/ic_unlock.xml",
-      "selection": {
-        "end": {
-          "column": 0,
-          "index": 637,
-          "line": 11
-        },
-        "start": {
-          "column": 0,
-          "index": 637,
-          "line": 11
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/res/menu/activity_main_drawer.xml",
-      "selection": {
-        "end": {
-          "column": 45,
-          "index": 709,
-          "line": 20
-        },
-        "start": {
-          "column": 45,
-          "index": 709,
-          "line": 20
+          "column": 35,
+          "index": 323,
+          "line": 8
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/res/menu/activity_main_drawer.xml"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/NgPad/app/src/main/java/com/chaosdev/ngpad/data/datasource/remote/RetrofitClient.java"
 }

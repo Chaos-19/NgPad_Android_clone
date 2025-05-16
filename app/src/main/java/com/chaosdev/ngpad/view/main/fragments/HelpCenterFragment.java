@@ -14,12 +14,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.chaosdev.ngpad.R;
 import com.chaosdev.ngpad.databinding.FragmentMainBinding;
+import com.chaosdev.ngpad.databinding.FragmentTabHelpCenterBinding;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class HelpCenterFragment extends Fragment {
-    private FragmentMainBinding binding;
+    private FragmentTabHelpCenterBinding binding;
 
     
     @Override
@@ -33,11 +34,9 @@ public class HelpCenterFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        binding = FragmentMainBinding.inflate(inflater, container, false);
+        binding = FragmentTabHelpCenterBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.sectionLabel;
-        textView.setText("HelpCenter Fragment");
         return root;
     }
 

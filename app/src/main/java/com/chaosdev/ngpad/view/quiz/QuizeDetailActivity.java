@@ -30,10 +30,9 @@ public class QuizeDetailActivity extends AppCompatActivity {
   private QuizeDetailAdapter adapter;
 
   private RecyclerView recycleView;
-  
-  private  int totalQuestion;
-  private int remainingQuestion;    
-    
+
+  private int totalQuestion;
+  private int remainingQuestion;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +61,14 @@ public class QuizeDetailActivity extends AppCompatActivity {
         (v) -> {
           viewModel.setOutputDetailVisibility(true);
 
-          Intent intent = new Intent(this, QuizResultActivity.class);
-          intent.putExtra("quizResult", viewModel.getResultOfQuize());
-          intent.putExtra("quizTopic", quizeTitle);
-          this.startActivity(intent);
+          int[] quizResult = viewModel.getResultOfQuize();
+
+          if (remainingQuestion != totalQuestion) {
+            Intent intent = new Intent(this, QuizResultActivity.class);
+            intent.putExtra("quizResult", quizResult);
+            intent.putExtra("quizTopic", quizeTitle);
+            this.startActivity(intent);
+          }
         });
 
     if (getSupportActionBar() != null) {
@@ -88,9 +91,10 @@ public class QuizeDetailActivity extends AppCompatActivity {
             this,
             questions -> {
               if (questions != null && !questions.isEmpty()) {
-                 adapter = new QuizeDetailAdapter(this, questions, viewModel);
+                adapter = new QuizeDetailAdapter(this, questions, viewModel);
                 recycleView.setAdapter(adapter);
-                totalQuestion = questions.size();     
+                totalQuestion = questions.size();
+                remainingQuestion = totalQuestion;
               }
             });
 
@@ -110,7 +114,9 @@ public class QuizeDetailActivity extends AppCompatActivity {
         .observe(
             this,
             answer -> {
-              totalQuestionTv.setText(String.format("Remaining Question : %d",totalQuestion - answer.size()));
+              remainingQuestion = totalQuestion - answer.size();
+              totalQuestionTv.setText(
+                  String.format("Remaining Question : %d", totalQuestion - answer.size()));
             });
 
     viewModel.fetchQuestionsByQuizSlug(quizeSlug);

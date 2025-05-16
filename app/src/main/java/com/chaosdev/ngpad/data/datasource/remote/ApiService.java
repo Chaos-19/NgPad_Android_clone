@@ -17,7 +17,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
-  @GET("tutorials/Java/categories/")
+  @GET("tutorials/Angular/categories/")
   Call<List<Category>> getCategories();
 
   @GET("categories/{slug}/courses/")

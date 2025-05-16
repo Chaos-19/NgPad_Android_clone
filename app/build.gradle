@@ -13,9 +13,31 @@ android {
         versionCode 1
         versionName "1.0"
     }
+  
+   signingConfigs {
+      release {
+        // Specify the name of your keystore file
+        // The file must be located in your module directory
+        storeFile file("../signing-key.jks")
 
+        // The keystore password
+        storePassword "kal0988741783ngpad"
+
+        // The key alias, same as the one you specified with '-alias' argument while creating the keystore
+        keyAlias "ngpadd"
+
+        // The key password
+        keyPassword "kal0988741783ngpad"
+      }
+    }
+    
+    lintOptions {
+        checkReleaseBuilds false
+    }
+    
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -32,14 +54,15 @@ android {
     configurations {
        all*.exclude group: 'org.jetbrains', module: 'annotations-java5'
     }
-    configurations.all {
-  resolutionStrategy.eachDependency { details ->
+   
+   configurations.all {
+    resolutionStrategy.eachDependency { details ->
     if (details.requested.group == "org.jetbrains.kotlin"
         && details.requested.name.startsWith("kotlin-stdlib")) {
       details.useVersion("1.8.10")
-    }
+     }
+   }
   }
-}
     
 }
 

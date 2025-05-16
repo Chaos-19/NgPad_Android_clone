@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
   private static final String BASE_URL =
-      "http://localhost:8000/"; // Replace with your API base URL
+      "https://tutorial-api-7nw2.onrender.com/"; // Replace with your API base URL
   private static Retrofit retrofit;
 
   public static ApiService getApiService() {
